@@ -1,4 +1,4 @@
-const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
+const BASE_URL = 'http://localhost:3090/api/v1/'
 
 export const createNewPet = (name) => {
   return (dispatch) => {
@@ -13,3 +13,4 @@ export const createNewPet = (name) => {
     .then(data => dispatch({ type: 'CREATE_PET', payload: data }));
 };
 }
+

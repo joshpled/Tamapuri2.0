@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import "../styles/button.css";
 import "../styles/input.css";
 
@@ -17,6 +18,7 @@ class NewPetForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createNewPet(this.state.name);
+    this.props.history.push("/game");
     this.setState({
       name: "",
     });
@@ -40,6 +42,7 @@ class NewPetForm extends Component {
             className="float-right"
             size="sm"
             id="btn-colour-1"
+            type="submit"
           >
             Hatch New Pet
           </Button>
@@ -49,4 +52,4 @@ class NewPetForm extends Component {
   }
 }
 
-export default NewPetForm;
+export default withRouter(NewPetForm);
