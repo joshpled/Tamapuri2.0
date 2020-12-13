@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "../styles/canvas.css";
-import { Container } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import Buttons from "../components/Buttons";
 import {updatePet} from '../actions/petActions'
+import right1 from '../images/right1.png'
 
 class DisplayCanvas extends Component {
   render() {
@@ -27,7 +28,9 @@ class DisplayCanvas extends Component {
           }}
         >
           <Container id="canvasSetting">
+          
             <h1>{this.props.pet.pet.name}</h1>
+              <center><Image src={right1} className="img-responsive" rounded /></center>
             <Buttons petId={this.props.pet.pet.id} updatePet={this.props.updatePet} />
           </Container>
         </motion.div>

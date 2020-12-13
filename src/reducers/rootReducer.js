@@ -27,7 +27,7 @@ function petReducer(state = { pet: {}, loading: false }, action) {
         pet: state.pet,
         loading: true,
       };
-
+      
       case "CHANGE_ATTRIBUTE":
         return{
           ...state,

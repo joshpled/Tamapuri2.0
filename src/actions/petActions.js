@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3090/api/v1/'
+const BASE_URL = 'http://127.0.0.1:3090/api/v1/'
 
 export const createNewPet = (name) => {
   return (dispatch) => {
