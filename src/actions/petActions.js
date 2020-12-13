@@ -14,3 +14,20 @@ export const createNewPet = (name) => {
 };
 }
 
+export const updatePet = (id, attribute) => {
+  return (dispatch) => {
+    dispatch({type: "CHANGING_ATTRIBUTE"});
+    fetch(BASE_URL + 'pets/' + id, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify( {
+        attribute: 1
+      } )
+    })
+    .then(resp => resp.json())
+    .then(data => dispatch({type: "CHANGE_ATTRIBUTE", payload: data}))
+  }
+}

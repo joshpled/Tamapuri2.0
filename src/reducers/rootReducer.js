@@ -1,28 +1,43 @@
-import { combineReducers } from "redux"; 
+import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-  pet: petReducer
+  pet: petReducer,
 });
 
-export default rootReducer; 
+export default rootReducer;
 
-function petReducer(state = { pet: {}, loading: false }, action){
+function petReducer(state = { pet: {}, loading: false }, action) {
   switch (action.type) {
     case "CREATING_PET":
       return {
-        ...state, 
+        ...state,
         pet: state.pet,
-        loading: true
-      }
+        loading: true,
+      };
     case "CREATE_PET":
       return {
         ...state,
         pet: action.payload,
-        loading: false
+        loading: false,
       };
+
+    case "CHANGING_ATTRIBUTE":
+      return {
+        ...state,
+        pet: state.pet,
+        loading: true,
+      };
+
+      case "CHANGE_ATTRIBUTE":
+        return{
+          ...state,
+          pet:{
+            ...state.pet
+          },
+          loading: false,
+        }
 
     default:
       return state;
   }
-
-};
+}
