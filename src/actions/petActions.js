@@ -1,9 +1,12 @@
-// heroku deployment
-// const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
-// localhost
-const BASE_URL = "http://localhost:3090/api/v1/";
-
 import {newAmount} from '../helpers/helper-methods'
+
+
+// heroku deployment
+const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
+
+// localhost
+// const BASE_URL = "http://localhost:3090/api/v1/";
+
 
 export const createNewPet = (name) => {
   let data = { name: name, health: 100, boredom: 100, hunger: 100 };
