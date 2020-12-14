@@ -4,8 +4,9 @@ import { Container, Image } from "react-bootstrap";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import Buttons from "../components/Buttons";
-import {updatePet} from '../actions/petActions'
-import right1 from '../images/right1.png'
+import { updatePet } from "../actions/petActions";
+import right1 from "../images/right1.png";
+import StatusBars from "../components/StatusBars";
 
 class DisplayCanvas extends Component {
   render() {
@@ -28,10 +29,15 @@ class DisplayCanvas extends Component {
           }}
         >
           <Container id="canvasSetting">
-          
             <h1>{this.props.pet.pet.name}</h1>
-              <center><Image src={right1} className="img-responsive" rounded /></center>
-            <Buttons petId={this.props.pet.pet.id} updatePet={this.props.updatePet} />
+            <center>
+              <Image src={right1} className="img-responsive" rounded />
+            </center>
+            <StatusBars pet={this.props.pet.pet} loading={this.props.pet.loading}/>
+            <Buttons
+              pet={this.props.pet.pet}
+              updatePet={this.props.updatePet}
+            />
           </Container>
         </motion.div>
       </div>
@@ -39,4 +45,4 @@ class DisplayCanvas extends Component {
   }
 }
 
-export default connect(({ pet }) => ({ pet }),{updatePet})(DisplayCanvas);
+export default connect(({ pet }) => ({ pet }), { updatePet })(DisplayCanvas);

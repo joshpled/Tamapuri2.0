@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 import "../styles/button.css";
 import "../styles/input.css";
+import { motion } from "framer-motion";
 
 class NewPetForm extends Component {
   state = {
@@ -11,14 +12,14 @@ class NewPetForm extends Component {
 
   handleChange = (e) => {
     this.setState({
-      name: e.target.value
+      name: e.target.value,
     });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createNewPet(this.state.name);
-    this.props.history.push('/game')
+    this.props.history.push("/game");
     this.setState({
       name: "",
     });
@@ -26,27 +27,35 @@ class NewPetForm extends Component {
   render() {
     return (
       <div>
-        <Form
-          onSubmit={(e) => {
-            this.handleSubmit(e);
-          }}
+        <motion.div
+          animate={{ y: 100 }}
+          transition={{ 
+            type: "inertia", 
+            velocity: 300, 
+            }}
         >
-          <Form.Control
-            value={this.state.name}
-            id="entername"
-            type="text"
-            placeholder="Enter a Name for your Pet "
-            onChange={(e) => this.handleChange(e)}
-          />
-          <Button
-            className="float-right"
-            size="sm"
-            id="btn-colour-1"
-            type='submit'
+          <Form
+            onSubmit={(e) => {
+              this.handleSubmit(e);
+            }}
           >
-            Hatch New Pet
-          </Button>
-        </Form>
+            <Form.Control
+              value={this.state.name}
+              id="entername"
+              type="text"
+              placeholder="Enter a Name for your Pet "
+              onChange={(e) => this.handleChange(e)}
+            />
+            <Button
+              className="float-right"
+              size="sm"
+              id="btn-colour-1"
+              type="submit"
+            >
+              Hatch New Pet
+            </Button>
+          </Form>
+        </motion.div>
       </div>
     );
   }

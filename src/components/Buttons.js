@@ -3,10 +3,11 @@ import "../styles/button.css";
 import { Button, Container, Row, Col } from "react-bootstrap";
 
 const Buttons = (props) => {
+  
   const clickChange = (e) => {
     e.preventDefault()
     let attr = e.target.value
-    props.updatePet(props.petId, attr);
+    props.updatePet(props.pet, attr);
   };
 
   return (
