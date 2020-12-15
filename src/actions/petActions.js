@@ -1,5 +1,4 @@
-import {newAmount} from '../helpers/helper-methods'
-
+import {newAmount, nameCapitalized} from '../helpers/helper-methods'
 
 // heroku deployment
 // const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
@@ -9,7 +8,7 @@ const BASE_URL = "http://localhost:3090/api/v1/";
 
 
 export const createNewPet = (name) => {
-  let data = { name: name, health: 100, boredom: 100, hunger: 100 };
+  let data = { name: nameCapitalized(name), health: 100, boredom: 100, hunger: 100 };
   return (dispatch) => {
     dispatch({ type: "CREATING_PET" });
     fetch(BASE_URL + "pets", {

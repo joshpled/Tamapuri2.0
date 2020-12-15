@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import "../styles/canvas.css";
-import { Container, Image, Spinner } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import Buttons from "../components/Buttons";
 import { updatePet } from "../actions/petActions";
-import right1 from "../images/right1.png";
+import { SpriteAnimator } from "react-sprite-animator";
+import spriteIdle from '../images/spriteIdle.png'
 import StatusBars from "../components/StatusBars";
 import { Redirect } from "react-router-dom";
 
 class DisplayCanvas extends Component {
   render() {
-    if (Object.keys(this.props.pet.pet).length != 0) {
+    if (Object.keys(this.props.pet.pet).length !== 0) {
       return (
         <div>
           <motion.div
@@ -33,7 +34,14 @@ class DisplayCanvas extends Component {
             <Container id="canvasSetting">
               <h1>{this.props.pet.pet.name}</h1>
               <center>
-                <Image src={right1} className="img-responsive" rounded />
+                <SpriteAnimator
+                  sprite={spriteIdle}
+                  width={530}
+                  height={420}
+                  fps={12}
+                  direction={"horizontal"}
+                  scale={1.5}
+                />
               </center>
               <StatusBars
                 pet={this.props.pet.pet}
@@ -53,7 +61,7 @@ class DisplayCanvas extends Component {
     ) {
       return <Redirect to="/" />;
     } else {
-      return <div>{setTimeout(<Spinner animation="border" />, 5000)}</div>;
+      return <div><Spinner animation="border" /></div>;
     }
   }
 }

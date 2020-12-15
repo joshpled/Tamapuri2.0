@@ -18,3 +18,7 @@ export function newAmount(curr,calc){
     return limitNumberWithinRange(calculation, 0, 100)
     }
   }
+
+  export function nameCapitalized(name){
+  return name.charAt(0).toUpperCase() + name.slice(1)
+  } 
