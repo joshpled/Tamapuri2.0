@@ -61,7 +61,15 @@ class DisplayCanvas extends Component {
     ) {
       return <Redirect to="/" />;
     } else {
-      return <div><Spinner animation="border" /></div>;
+      return <div>
+      <Container style={{
+        position: 'absolute', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)'
+    }}>
+      <Spinner animation="border" />
+      </Container>
+      </div>;
+      
     }
   }
 }

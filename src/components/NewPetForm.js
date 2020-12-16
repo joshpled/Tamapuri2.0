@@ -31,7 +31,7 @@ class NewPetForm extends Component {
           animate={{ y: 100 }}
           transition={{ 
             type: "inertia", 
-            velocity: 300, 
+            velocity: 100, 
             }}
         >
           <Form
@@ -51,6 +51,7 @@ class NewPetForm extends Component {
               size="sm"
               id="btn-colour-1"
               type="submit"
+              style={{marginTop: '10px'}}
             >
               Hatch New Pet
             </Button>
