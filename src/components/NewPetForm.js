@@ -19,7 +19,7 @@ class NewPetForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createNewPet(this.state.name);
-    this.props.history.push("/game");
+    this.props.history.push("/loading");
     this.setState({
       name: "",
     });
@@ -28,7 +28,7 @@ class NewPetForm extends Component {
     return (
       <div>
         <motion.div
-          animate={{ y: 100 }}
+          animate={{ x: 100 }}
           transition={{ 
             type: "inertia", 
             velocity: 100, 

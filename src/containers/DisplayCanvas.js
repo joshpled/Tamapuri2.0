@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import "../styles/canvas.css";
-import { Container, Spinner } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
-import Buttons from "../components/Buttons";
-import { updatePet } from "../actions/petActions";
-import { SpriteAnimator } from "react-sprite-animator";
-import spriteIdle from '../images/spriteIdle.png'
-import StatusBars from "../components/StatusBars";
 import { Redirect } from "react-router-dom";
+import { updatePet } from "../actions/petActions";
+import Buttons from "../components/Buttons";
+import StatusBars from "../components/StatusBars";
+import Sprite from "../components/Sprite";
+import LoadingBar from "../components/LoadingBar";
 
 class DisplayCanvas extends Component {
   render() {
@@ -33,16 +33,7 @@ class DisplayCanvas extends Component {
           >
             <Container id="canvasSetting">
               <h1>{this.props.pet.pet.name}</h1>
-              <center>
-                <SpriteAnimator
-                  sprite={spriteIdle}
-                  width={530}
-                  height={420}
-                  fps={12}
-                  direction={"horizontal"}
-                  scale={1.5}
-                />
-              </center>
+              <Sprite />
               <StatusBars
                 pet={this.props.pet.pet}
                 loading={this.props.pet.loading}
@@ -61,15 +52,11 @@ class DisplayCanvas extends Component {
     ) {
       return <Redirect to="/" />;
     } else {
-      return <div>
-      <Container style={{
-        position: 'absolute', left: '50%', top: '50%',
-        transform: 'translate(-50%, -50%)'
-    }}>
-      <Spinner animation="border" />
-      </Container>
-      </div>;
-      
+      return (
+        <div>
+          <LoadingBar />
+        </div>
+      );
     }
   }
 }
