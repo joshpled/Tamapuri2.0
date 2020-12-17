@@ -9,6 +9,7 @@ import Buttons from "../components/Buttons";
 import StatusBars from "../components/StatusBars";
 import Sprite from "../components/Sprite";
 import LoadingBar from "../components/LoadingBar";
+import NameStatusBar from '../components/NameStatusBar'
 
 class DisplayCanvas extends Component {
   render() {
@@ -32,7 +33,9 @@ class DisplayCanvas extends Component {
             }}
           >
             <Container id="canvasSetting">
-              <h1>{this.props.pet.pet.name}</h1>
+            <div style={{height: '10px'}} />
+              <NameStatusBar pet={this.props.pet.pet}/>
+              <div style={{height: '60px'}} />
               <Sprite />
               <StatusBars
                 pet={this.props.pet.pet}
