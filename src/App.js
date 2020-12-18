@@ -13,6 +13,7 @@ class App extends Component {
       <Route exact path="/game" component={DisplayCanvas}/>
       <Route exact path="/" component={Pet} />
       <Route exact path='/loading' component={Transition}/>
+      {/* <Route exact path='/slot-machine' component{SlotMachine}/> */}
       </div>
       </Router>
     );
