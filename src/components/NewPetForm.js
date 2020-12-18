@@ -47,11 +47,10 @@ class NewPetForm extends Component {
               onChange={(e) => this.handleChange(e)}
             />
             <Button
-              className="float-right"
               size="sm"
               id="btn-colour-1"
               type="submit"
-              style={{marginTop: '10px'}}
+              style={{marginTop: '10px', float: 'right'}}
             >
               Hatch New Pet
             </Button>
