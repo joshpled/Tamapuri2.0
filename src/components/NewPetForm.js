@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import "../styles/button.css";
 import "../styles/input.css";
+import '../styles/canvas.css'
 import { motion } from "framer-motion";
 
 class NewPetForm extends Component {
@@ -24,15 +25,30 @@ class NewPetForm extends Component {
       name: "",
     });
   };
+
   render() {
     return (
       <div>
-        <motion.div
-          animate={{ x: 100 }}
-          transition={{ 
-            type: "inertia", 
-            velocity: 100, 
+      <motion.div
+      initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {
+                opacity: 0,
+              },
+              visible: {
+                opacity: 1,
+                duration: 4,
+              },
             }}
+      >
+      <Container style={{ maxWidth: "540px", borderStyle: 'ridge', borderWidth: '3px'}} id="canvasSetting">
+        <motion.div
+          animate={{ y: 100 }}
+          transition={{
+            type: "inertia",
+            velocity: 200,
+          }}
         >
           <Form
             onSubmit={(e) => {
@@ -50,11 +66,13 @@ class NewPetForm extends Component {
               size="sm"
               id="btn-colour-1"
               type="submit"
-              style={{marginTop: '10px', float: 'right'}}
+              style={{ marginTop: "10px", float: "right" }}
             >
               Hatch New Pet
             </Button>
           </Form>
+        </motion.div>
+        </Container>
         </motion.div>
       </div>
     );
