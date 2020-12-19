@@ -4,12 +4,12 @@ import {BrowserRouter } from 'react-router-dom'
 import {render} from 'react-dom'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers/rootReducer'
+import reducer from './reducers/rootReducer'
 import thunk from 'redux-thunk';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(reducer, applyMiddleware(thunk))
 
 render(
   <Provider store={store}>

@@ -1,10 +1,10 @@
 import { newAmount, nameCapitalized } from "../helpers/helper-methods";
 
 // heroku deployment
-// const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
+const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
 
 // localhost
-const BASE_URL = "http://localhost:3090/api/v1/";
+// const BASE_URL = "http://localhost:3090/api/v1/";
 
 export const createNewPet = (name) => {
   let data = {
@@ -22,7 +22,8 @@ export const createNewPet = (name) => {
       body: JSON.stringify({ pet: data }),
     })
       .then((response) => response.json())
-      .then((data) => dispatch({ type: "CREATE_PET", payload: data }));
+      .then((data) => dispatch({ type: "CREATE_PET", payload: data }))
+      .catch((error) => console.log(error))
   };
 };
 

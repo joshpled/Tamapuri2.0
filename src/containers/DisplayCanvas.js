@@ -9,12 +9,13 @@ import Buttons from "../components/Buttons";
 import StatusBars from "../components/StatusBars";
 import Sprite from "../components/Sprite";
 import LoadingBar from "../components/LoadingBar";
-import NameStatusBar from '../components/NameStatusBar'
+import NameStatusBar from "../components/NameStatusBar";
 // import Menu from '../components/Menu'
 
 class DisplayCanvas extends Component {
   render() {
-    if (Object.keys(this.props.pet.pet).length !== 0) {
+    const {pet, loading} = this.props.pet;
+    if (Object.keys(pet).length !== 0) {
       return (
         <div>
           <motion.div
@@ -34,25 +35,19 @@ class DisplayCanvas extends Component {
             }}
           >
             <Container id="canvasSetting">
-            <div style={{height: '10px'}} />
-              <NameStatusBar pet={this.props.pet.pet}/>
-              <div style={{height: '60px'}} />
+              <div style={{ height: "10px" }} />
+              <NameStatusBar pet={pet} />
+              <div style={{ height: "60px" }} />
               <Sprite />
-              <StatusBars
-                pet={this.props.pet.pet}
-                loading={this.props.pet.loading}
-              />
-              <Buttons
-                pet={this.props.pet.pet}
-                updatePet={this.props.updatePet}
-              />
+              <StatusBars pet={pet} loading={loading} />
+              <Buttons pet={pet} updatePet={this.props.updatePet} />
             </Container>
           </motion.div>
         </div>
       );
     } else if (
-      Object.keys(this.props.pet.pet).length === 0 &&
-      this.props.pet.loading === false
+      Object.keys(pet).length === 0 &&
+      loading === false
     ) {
       return <Redirect to="/" />;
     } else {
@@ -65,4 +60,15 @@ class DisplayCanvas extends Component {
   }
 }
 
-export default connect(({ pet }) => ({ pet }), { updatePet })(DisplayCanvas);
+
+const mapStateToProps = (state) => {
+  return {
+    pet: state.pet,
+    loading: state.loading,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { updatePet }
+)(DisplayCanvas);
