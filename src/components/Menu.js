@@ -1,11 +1,50 @@
-import React from 'react';
+import React, { Component } from "react";
+import '../styles/menu.css'
+import { Modal, Button } from "react-bootstrap";
 
-const Menu = () => {
+export default class Menu extends Component {
+
+  constructor(props, context) {
+    super(props, context);
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.state = {
+      show: false,
+    };
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+  }
+  handleClose() {
+    this.props.toggle();
+    this.setState({ show: false });
+  }
+
+  render() {
     return (
-        <div>
-            Hello
-        </div>
+      <>
+        <Modal
+          show={this.state.show}
+          onHide={() => this.handleClose()}
+          contentClassName={'custom'}
+        >
+          <Modal.Header>
+            <Modal.Title>Settings </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Button variant="outline-secondary">Go To Store</Button>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" size="sm" onClick={() => this.handleClose()}>
+              Close
+            </Button>
+            <Button variant="primary"  size="sm" onClick={() => this.handleClose()}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     );
-};
-
-export default Menu;
+  }
+}

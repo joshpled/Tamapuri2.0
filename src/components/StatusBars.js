@@ -6,7 +6,6 @@ const StatusBars = (props) => {
   const barStyle = {
     height: '30px'
   }
- 
     return (
       <div>
         <ProgressBar

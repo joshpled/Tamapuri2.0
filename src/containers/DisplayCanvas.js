@@ -34,7 +34,11 @@ class DisplayCanvas extends Component {
               },
             }}
           >
-            <Container id="canvasSetting">
+            <Container id="canvasSetting" style={{
+              maxWidth: "540px",
+              borderStyle: "ridge",
+              borderWidth: "3px",
+            }}>
               <div style={{ height: "10px" }} />
               <NameStatusBar pet={pet} />
               <div style={{ height: "60px" }} />

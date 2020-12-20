@@ -11,35 +11,39 @@ const Buttons = (props) => {
 
   return (
     <div>
-      <Container style={{marginTop: '10%'}}>
+      <Container style={{ marginTop: "10%" }}>
         <Row>
           <Col>
-            <center><Button
-              value="hunger"
-              onClick={(e) => clickChange(e)}
-              id="btn-colour-2"
-            >
-              FEED
-            </Button></center>
+            <center>
+              <Button
+                value="hunger"
+                onClick={(e) => clickChange(e)}
+                id="btn-colour-2"
+              >
+                FEED
+              </Button>
+            </center>
           </Col>
           <Col>
-            <center><Button
-              value="health"
-              onClick={(e) => clickChange(e)}
-              id="btn-colour-2"
-            >
-              HEAL
-            </Button></center>
+            <center>
+              <Button
+                value="health"
+                onClick={(e) => clickChange(e)}
+                id="btn-colour-2"
+              >
+                HEAL
+              </Button>
+            </center>
           </Col>
           <Col>
-          <center>
-            <Button
-              value="boredom"
-              onClick={(e) => clickChange(e)}
-              id="btn-colour-2"
-            >
-              PLAY
-            </Button>
+            <center>
+              <Button
+                value="boredom"
+                onClick={(e) => clickChange(e)}
+                id="btn-colour-2"
+              >
+                PLAY
+              </Button>
             </center>
           </Col>
         </Row>

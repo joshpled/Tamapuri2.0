@@ -1,22 +1,49 @@
-import React, {useState} from 'react';
-import {Container} from 'react-bootstrap'
-import Hamburger from 'hamburger-react'
+import React, { Component } from "react";
+import { Container } from "react-bootstrap";
+import Hamburger from "hamburger-react";
+import Menu from "./Menu";
 
-const NameStatusBar = (props) => {
-    const [isOpen, setOpen] = useState(false)
+export default class NameStatusBar extends Component {
+    
+  constructor(props, context) {
+    super(props, context);
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false,
+    };
+  }
+
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  };
+
+  menuModalRef = ({ handleShow }) => {
+    this.showModal = handleShow;
+  };
+
+  onMenuClick = () => {
+    this.showModal();
+  };
+
+  render() {
+    const { pet } = this.props;
 
     return (
-        <div>
+      <div>
         <Container>
-        <div style={{float: 'left'}}>
-            <h1>{props.pet.name}</h1>
-        </div>
-        <div style={{float: 'right'}}>
-       <Hamburger toggled={isOpen} toggle={setOpen}/>
-        </div>
+          <div style={{ float: "left" }}>
+            <h1>{pet.name}</h1>
+          </div>
+          <div style={{ float: "right" }}>
+            <span onClick={() => this.onMenuClick()}>
+              <Hamburger toggled={this.state.isOpen} toggle={this.toggle} />
+            </span>
+            <Menu ref={this.menuModalRef} toggle={this.toggle}/>
+          </div>
         </Container>
-        </div>
+      </div>
     );
-};
-
-export default NameStatusBar;
+  }
+}
