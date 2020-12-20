@@ -1,6 +1,14 @@
 .custom {
-    background-color: #9bebf5e3 !important;
-
+	background-color: #9bebf5e3 !important;
+	height: 42vh;
+	padding-bottom: 20px;
+	border: 2px solid #393294 !important;
+	border-radius: 2em !important; 
+}
+.custom-popover {
+	background-color: #9bebf5e3 !important;
+	border: 2px solid #393294 !important;
+	border-radius: 1em !important;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Rubik:700&display=swap');
@@ -24,6 +32,7 @@
 }
  button.learn-more {
 	 font-weight: 600;
+	 margin: 0 5px 25px 0;
 	 color: #382b22;
 	 text-transform: uppercase;
 	 background: #fff0f0;

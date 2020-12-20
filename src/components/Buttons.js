@@ -1,6 +1,7 @@
 import React from "react";
+import tacos from "../images/tacos.png";
 import "../styles/button.css";
-import '../styles/menu.css'
+import "../styles/menu.css";
 import {
   Button,
   Container,
@@ -8,6 +9,8 @@ import {
   Col,
   OverlayTrigger,
   Popover,
+  Image,
+  Tooltip,
 } from "react-bootstrap";
 
 const Buttons = (props) => {
@@ -25,11 +28,37 @@ const Buttons = (props) => {
             <center>
               <OverlayTrigger
                 trigger="click"
-                placement={'top'}
+                placement={"top"}
                 rootClose={true}
                 overlay={
-                  <Popover id={`popover-positioned-top`} className="custom">
-                      <Button>Hello</Button>
+                  <Popover
+                    id={`popover-positioned-top`}
+                    className="custom-popover"
+                  >
+                    <Popover.Content>
+                      <OverlayTrigger
+                        placement={"top"}
+                        overlay={
+                          <Tooltip id={`tooltip-top`}>
+                            +30% to Hunger
+                          </Tooltip>
+                        }
+                      >
+                        <Button
+                          variant="outline-info"
+                          style={{ padding: ".15rem .2rem .15rem .2rem" }}
+                        >
+                          <Image
+                            src={tacos}
+                            style={{
+                              height: "40px",
+                              padding: ".005rem .005rem",
+                            }}
+                          ></Image>{" "}
+                          <span style={{ color: "black" }}>3</span>
+                        </Button>
+                      </OverlayTrigger>
+                    </Popover.Content>
                   </Popover>
                 }
               >

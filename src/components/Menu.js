@@ -14,6 +14,7 @@ export default class Menu extends Component {
   }
 
   handleShow() {
+    
     this.setState({ show: true });
   }
   handleClose() {
@@ -30,13 +31,15 @@ export default class Menu extends Component {
           contentClassName={'custom'}
         >
           <Modal.Header>
-            <Modal.Title>Settings </Modal.Title>
+            <Modal.Title id="center-title">Menu</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Button className="learn-more">Go To Store</Button>
+            <Button className="learn-more">Go To A-Vale</Button>
+            <Button className="learn-more">Change Pet Color</Button>
           </Modal.Body>
           <Modal.Footer>
-            <Button className="learn-more" onClick={() => this.handleClose()}>
+            <Button className="learn-more" onClick={() => this.handleClose()} >
               Close
             </Button>
             {/* <Button variant="primary"  size="sm" onClick={() => this.handleClose()}>
