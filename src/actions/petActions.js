@@ -16,7 +16,7 @@ export const createNewPet = (name) => {
   
   return (dispatch) => {
     dispatch({ type: "CREATING_PET" });
-    fetch(BASE_URL + "pets", {
+    fetch(BASE_URL + "pets/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ pet: data }),

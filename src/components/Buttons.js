@@ -1,6 +1,14 @@
 import React from "react";
 import "../styles/button.css";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import '../styles/menu.css'
+import {
+  Button,
+  Container,
+  Row,
+  Col,
+  OverlayTrigger,
+  Popover,
+} from "react-bootstrap";
 
 const Buttons = (props) => {
   const clickChange = (e) => {
@@ -15,13 +23,24 @@ const Buttons = (props) => {
         <Row>
           <Col>
             <center>
-              <Button
-                value="hunger"
-                onClick={(e) => clickChange(e)}
-                id="btn-colour-2"
+              <OverlayTrigger
+                trigger="click"
+                placement={'top'}
+                rootClose={true}
+                overlay={
+                  <Popover id={`popover-positioned-top`} className="custom">
+                      <Button>Hello</Button>
+                  </Popover>
+                }
               >
-                FEED
-              </Button>
+                <Button
+                  value="hunger"
+                  onClick={(e) => clickChange(e)}
+                  id="btn-colour-2"
+                >
+                  FEED
+                </Button>
+              </OverlayTrigger>
             </center>
           </Col>
           <Col>

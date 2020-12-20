@@ -33,15 +33,15 @@ export default class Menu extends Component {
             <Modal.Title>Settings </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Button variant="outline-secondary">Go To Store</Button>
+            <Button className="learn-more">Go To Store</Button>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" size="sm" onClick={() => this.handleClose()}>
+            <Button className="learn-more" onClick={() => this.handleClose()}>
               Close
             </Button>
-            <Button variant="primary"  size="sm" onClick={() => this.handleClose()}>
+            {/* <Button variant="primary"  size="sm" onClick={() => this.handleClose()}>
               Save Changes
-            </Button>
+            </Button> */}
           </Modal.Footer>
         </Modal>
       </>
