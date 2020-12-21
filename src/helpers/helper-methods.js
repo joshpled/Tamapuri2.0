@@ -1,6 +1,3 @@
-export function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
 
 export function limitNumberWithinRange(num, min, max){
     const MIN = min || 0;
@@ -9,14 +6,9 @@ export function limitNumberWithinRange(num, min, max){
     return Math.min(Math.max(parsed, MIN), MAX)
   }
 
-export function newAmount(curr,calc){
-    if (calc === '+'){
-      let calculation = curr + getRandomInt(20)
-    return limitNumberWithinRange(calculation, 0, 100)
-    } else if (calc === '-') {
-    let calculation = curr - getRandomInt(20)
-    return limitNumberWithinRange(calculation, 0, 100)
-    }
+export function newAmount(curr,value){
+      let calc = curr + value
+    return limitNumberWithinRange(calc, 0, 100)
   }
 
   export function nameCapitalized(name){

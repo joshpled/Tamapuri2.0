@@ -1,10 +1,10 @@
-import { newAmount, nameCapitalized } from "../helpers/helper-methods";
+import { nameCapitalized } from "../helpers/helper-methods";
 
 // heroku deployment
-const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
+// const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
 
 // localhost
-// const BASE_URL = "http://localhost:3090/api/v1/";
+const BASE_URL = "http://localhost:3090/api/v1/";
 
 export const createNewPet = (name) => {
   let data = {
@@ -27,32 +27,10 @@ export const createNewPet = (name) => {
   };
 };
 
-export const updatePet = (pet, attribute) => {
-  let data = {};
+export const updatePet = (pet) => {
 
-  switch (attribute) {
-    case "boredom":
-      data = {
-        boredom: newAmount(pet.boredom, "+"),
-        hunger: newAmount(pet.hunger, "-"),
-      };
-      break;
-    case "hunger":
-      data = {
-        hunger: newAmount(pet.hunger, "+"),
-        boredom: newAmount(pet.boredom, "-"),
-      };
-      break;
-    case "health":
-      data = {
-        health: newAmount(pet.health, "+"),
-        hunger: newAmount(pet.hunger, "-"),
-      };
-      break;
-    default:
-      data = { ...pet };
-  }
-
+  const data = pet
+  
   return (dispatch) => {
     dispatch({ type: "CHANGING_ATTRIBUTE" });
     fetch(BASE_URL + "pets/" + pet.id, {

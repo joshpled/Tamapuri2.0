@@ -2,6 +2,8 @@ import React from "react";
 import tacos from "../images/tacos.png";
 import "../styles/button.css";
 import "../styles/menu.css";
+import {changeAttribute} from '../helpers/status-methods'
+
 import {
   Button,
   Container,
@@ -16,8 +18,8 @@ import {
 const Buttons = (props) => {
   const clickChange = (e) => {
     e.preventDefault();
-    let attr = e.target.value;
-    props.updatePet(props.pet, attr);
+    changeAttribute(e.target.getAttribute("value"), {name: 'taco', value: 30}, props.pet)
+    // props.updatePet(props.pet, attr);
   };
 
   return (
@@ -49,7 +51,9 @@ const Buttons = (props) => {
                           style={{ padding: ".15rem .2rem .15rem .2rem" }}
                         >
                           <Image
+                            value="hunger"
                             src={tacos}
+                            onClick={(e) => clickChange(e)}
                             style={{
                               height: "40px",
                               padding: ".005rem .005rem",
@@ -63,8 +67,7 @@ const Buttons = (props) => {
                 }
               >
                 <Button
-                  value="hunger"
-                  onClick={(e) => clickChange(e)}
+                  key='hunger'
                   id="btn-colour-2"
                 >
                   FEED
