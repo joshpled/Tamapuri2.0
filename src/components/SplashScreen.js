@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Logo from "../images/Logo.png";
 import { Container } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import "../styles/canvas.css";
@@ -61,7 +60,7 @@ const SplashScreen = () => {
           <img
             alt="logo"
             className="img-fluid"
-            src={Logo}
+            src='/images/Logo.png'
             style={{ margin: "auto", verticalAlign: "baseline" }}
           ></img>
         </Container>

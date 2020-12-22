@@ -1,4 +1,3 @@
-import { nameCapitalized } from "../helpers/helper-methods";
 
 // heroku deployment
 // const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
@@ -8,7 +7,7 @@ const BASE_URL = "http://localhost:3090/api/v1/";
 
 export const createNewPet = (name) => {
   let data = {
-    name: nameCapitalized(name),
+    name: name.charAt(0).toUpperCase() + name.slice(1),
     health: 100,
     boredom: 100,
     hunger: 100,
@@ -27,13 +26,12 @@ export const createNewPet = (name) => {
   };
 };
 
-export const updatePet = (pet) => {
-
+export const updatePet = (pet,petId) => {
   const data = pet
   
   return (dispatch) => {
     dispatch({ type: "CHANGING_ATTRIBUTE" });
-    fetch(BASE_URL + "pets/" + pet.id, {
+    fetch(BASE_URL + "pets/" + petId, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
