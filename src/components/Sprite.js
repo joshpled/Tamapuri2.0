@@ -1,13 +1,12 @@
 import React from "react";
 import { SpriteAnimator } from "react-sprite-animator";
-import spriteIdle from "../images/spriteIdle.png";
 
 const Sprite = () => {
   return (
     <div>
       <center>
         <SpriteAnimator
-          sprite={spriteIdle}
+          sprite="/images/spriteIdle.png"
           width={530}
           height={420}
           fps={12}
