@@ -1,16 +1,13 @@
 
 // heroku deployment
-// const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
+const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
 
 // localhost
-const BASE_URL = "http://localhost:3090/api/v1/";
+// const BASE_URL = "http://localhost:3090/api/v1/";
 
 export const createNewPet = (name) => {
   let data = {
-    name: name.charAt(0).toUpperCase() + name.slice(1),
-    health: 100,
-    boredom: 100,
-    hunger: 100,
+    name: name.charAt(0).toUpperCase() + name.slice(1)
   };
   
   return (dispatch) => {
