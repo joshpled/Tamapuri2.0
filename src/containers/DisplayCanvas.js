@@ -10,7 +10,6 @@ import StatusBars from "../components/StatusBars";
 import Sprite from "../components/Sprite";
 import LoadingBar from "../components/LoadingBar";
 import NameStatusBar from "../components/NameStatusBar";
-// import Menu from '../components/Menu'
 
 class DisplayCanvas extends Component {
   render() {

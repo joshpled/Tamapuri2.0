@@ -42,9 +42,6 @@ export default class Menu extends Component {
             <Button className="learn-more" onClick={() => this.handleClose()} >
               Close
             </Button>
-            {/* <Button variant="primary"  size="sm" onClick={() => this.handleClose()}>
-              Save Changes
-            </Button> */}
           </Modal.Footer>
         </Modal>
       </>
