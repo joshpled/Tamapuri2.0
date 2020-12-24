@@ -70,7 +70,7 @@ const SplashScreen = () => {
   );
    }
    else {
-    return <Redirect to="/name" />;
+    return <Redirect to="/userauth" />;
   }
 };
 export default SplashScreen;
