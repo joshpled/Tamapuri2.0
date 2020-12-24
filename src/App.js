@@ -5,7 +5,6 @@ import DisplayCanvas from  './containers/DisplayCanvas'
 import SplashScreen from './components/SplashScreen'
 import NewPetForm from './containers/NewPetForm'
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Registration from "./components/auth/Registration";
 
 class App extends Component {
   render() {
@@ -16,8 +15,6 @@ class App extends Component {
       <Route exact path="/" component={SplashScreen} />
       <Route exact path='/name' component={NewPetForm}/>
       <Route exact path='/loading' component={Transition}/>
-      <Route exact path='/register' component={Registration} />
-      {/* <Route exact path='/slot-machine' component{SlotMachine}/> */}
       </div>
       </Router>
     );

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom'
 
-export default class Registration extends Component {
+class Registration extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -30,8 +31,14 @@ export default class Registration extends Component {
 				},
 				{ withCredentials: true }
 			)
-            .then((resp) => console.log('registration res', resp))
-            .catch((error) => console.log('registration error', error))
+			.then((resp) => {
+				if (resp.data.status === 'created'){
+					this.props.handleSuccessfulAuth(resp.data)
+				}
+			})
+			.then(this.props.history.push("/testing"))
+			.catch((error) => console.log('registration error', error))
+			
 	}
 
 	handleChange(e) {
@@ -74,3 +81,7 @@ export default class Registration extends Component {
 		);
 	}
 }
+
+
+  
+export default withRouter(Registration) 
