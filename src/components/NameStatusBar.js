@@ -42,7 +42,7 @@ export default class NameStatusBar extends Component {
               <Hamburger toggled={this.state.isOpen} toggle={this.toggle} />
             </span>
             <Menu ref={this.menuModalRef} toggle={this.toggle} />
-            <Store ref={this.menuModalRef} toggle={this.toggle} />
+            {/* <Store ref={this.menuModalRef} toggle={this.toggle} /> */}
           </div>
         </Container>
       </div>
