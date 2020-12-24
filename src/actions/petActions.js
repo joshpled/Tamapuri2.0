@@ -1,15 +1,13 @@
-
 // heroku deployment
-const BASE_URL = 'https://vast-plains-99264.herokuapp.com/api/v1/'
+const BASE_URL = "https://vast-plains-99264.herokuapp.com/api/v1/";
 
 // localhost
 // const BASE_URL = "http://localhost:3090/api/v1/";
 
 export const createNewPet = (name) => {
   let data = {
-    name: name.charAt(0).toUpperCase() + name.slice(1)
+    name: name.charAt(0).toUpperCase() + name.slice(1),
   };
-  
   return (dispatch) => {
     dispatch({ type: "CREATING_PET" });
     fetch(BASE_URL + "pets/", {
@@ -19,13 +17,13 @@ export const createNewPet = (name) => {
     })
       .then((response) => response.json())
       .then((data) => dispatch({ type: "CREATE_PET", payload: data }))
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error));
   };
 };
 
-export const updatePet = (pet,petId) => {
-  const data = pet
-  
+export const updatePet = (pet, petId) => {
+  const data = pet;
+
   return (dispatch) => {
     dispatch({ type: "CHANGING_ATTRIBUTE" });
     fetch(BASE_URL + "pets/" + petId, {
@@ -40,25 +38,3 @@ export const updatePet = (pet,petId) => {
       .then((json) => dispatch({ type: "CHANGE_ATTRIBUTE", payload: json }));
   };
 };
-
-
-
-
-// export const purchaseItem = (pet,petId) => {
-//   const data = pet
-  
-//   return (dispatch) => {
-//     dispatch({ type: "CHANGING_ATTRIBUTE" });
-//     fetch(BASE_URL + "pets/" + petId, {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//       },
-//       body: JSON.stringify({ pet: data }),
-//     })
-//       .then((resp) => resp.json())
-//       .then((json) => dispatch({ type: "CHANGE_ATTRIBUTE", payload: json }));
-//   };
-// };
-

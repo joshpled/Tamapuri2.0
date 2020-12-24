@@ -14,7 +14,6 @@ export default class Menu extends Component {
   }
 
   handleShow() {
-    
     this.setState({ show: true });
   }
   handleClose() {

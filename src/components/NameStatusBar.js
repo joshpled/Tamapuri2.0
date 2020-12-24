@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import Hamburger from "hamburger-react";
 import Menu from "./Menu";
+import Store from './Store'
 
 export default class NameStatusBar extends Component {
     
@@ -40,7 +41,8 @@ export default class NameStatusBar extends Component {
             <span onClick={() => this.onMenuClick()}>
               <Hamburger toggled={this.state.isOpen} toggle={this.toggle} />
             </span>
-            <Menu ref={this.menuModalRef} toggle={this.toggle}/>
+            <Menu ref={this.menuModalRef} toggle={this.toggle} />
+            <Store ref={this.menuModalRef} toggle={this.toggle} />
           </div>
         </Container>
       </div>
