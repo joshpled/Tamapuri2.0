@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom'
+import {Form, Button} from 'react-bootstrap'
 
 class Login extends Component {
 	constructor(props) {
@@ -47,26 +48,28 @@ class Login extends Component {
 	render() {
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
-					<input
+				<Form onSubmit={this.handleSubmit}>
+					<Form.Control
 						type="email"
 						name="email"
 						placeholder="Enter your email"
 						value={this.state.email}
 						onChange={this.handleChange}
+						style={{marginBottom: '.5em'}}
 						required
 					/>
-					<input
+					<Form.Control
 						type="password"
 						name="password"
 						placeholder="Password"
 						value={this.state.password}
 						onChange={this.handleChange}
+						style={{marginBottom: '.5em'}}
 						required
 					/>
 					
-					<button type="submit">Login</button>
-				</form>
+					<Button type="submit" style={{marginTop: '10px'}}>Login</Button>
+				</Form>
 			</div>
 		);
 	}

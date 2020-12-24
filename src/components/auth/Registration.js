@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
 
 class Registration extends Component {
 	constructor(props) {
@@ -32,12 +33,11 @@ class Registration extends Component {
 				{ withCredentials: true }
 			)
 			.then((resp) => {
-				if (resp.data.status === 'created'){
-					this.props.handleSuccessfulAuth(resp.data)
+				if (resp.data.status === 'created') {
+					this.props.handleSuccessfulAuth(resp.data);
 				}
 			})
-			.catch((error) => console.log('registration error', error))
-			
+			.catch((error) => console.log('registration error', error));
 	}
 
 	handleChange(e) {
@@ -49,38 +49,41 @@ class Registration extends Component {
 	render() {
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
-					<input
+				<Form onSubmit={this.handleSubmit}>
+					<Form.Control
 						type="email"
 						name="email"
 						placeholder="Enter your email"
 						value={this.state.email}
 						onChange={this.handleChange}
+						style={{ marginBottom: '.5em' }}
 						required
 					/>
-					<input
+					<Form.Control
 						type="password"
 						name="password"
 						placeholder="Password"
 						value={this.state.password}
 						onChange={this.handleChange}
+						style={{ marginBottom: '.5em' }}
 						required
 					/>
-					<input
+					<Form.Control
 						type="password"
 						name="password_confirmation"
 						placeholder="Password Confirmation"
 						value={this.state.password_confirmation}
 						onChange={this.handleChange}
+						style={{ marginBottom: '.5em' }}
 						required
 					/>
-					<button type="submit">Register</button>
-				</form>
+					<Button type="submit" style={{ marginTop: '10px' }}>
+						Register
+					</Button>
+				</Form>
 			</div>
 		);
 	}
 }
 
-
-  
-export default withRouter(Registration) 
+export default withRouter(Registration);
