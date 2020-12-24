@@ -16,7 +16,7 @@ export default class Store extends Component {
   handleShow() {
     this.setState({ show: true });
   }
-  
+
   handleClose() {
     this.props.toggle();
     this.setState({ show: false });
