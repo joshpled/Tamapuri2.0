@@ -34,7 +34,11 @@ class Registration extends Component {
 			)
 			.then((resp) => {
 				if (resp.data.status === 'created') {
-					this.props.handleSuccessfulAuth(resp.data);
+					this.props.history.push("/loading");
+				} else {
+					this.setState({
+						registrationErrors: resp
+					})
 				}
 			})
 			.catch((error) => console.log('registration error', error));

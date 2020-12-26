@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Login from '../components/auth/Login';
 import Registration from '../components/auth/Registration';
 import { Container, Jumbotron } from 'react-bootstrap';
 import '../styles/canvas.css';
 
 export class UserAuth extends Component {
+	
 	render() {
 		return (
 			<div>
@@ -17,6 +17,7 @@ export class UserAuth extends Component {
 						borderWidth: '3px',
 					}}
 				>
+				<Container style={{marginTop: '3em'}}>
 					<Jumbotron fluid>
 						<Container>
 							<h1 className="display-2">Welcome</h1>
@@ -35,16 +36,12 @@ export class UserAuth extends Component {
 						</Container>
 					</Jumbotron>
                     <Registration />
+					</Container>
 				</Container>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = (state) => ({
-	user: state.user,
-});
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserAuth);
+export default UserAuth

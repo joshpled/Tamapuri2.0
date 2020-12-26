@@ -1,29 +1,35 @@
-import React, { Component } from "react";
-import LoadingBar from "../components/LoadingBar";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import LoadingBar from '../components/LoadingBar';
+import { Redirect } from 'react-router-dom';
 
 class Transition extends Component {
-  state = {
-    redirect: false,
-  };
+	state = {
+		redirect: false,
+	};
 
-  componentDidMount() {
-    this.id = setTimeout(() => this.setState({ redirect: true }), 2500);
-  }
+	componentDidMount() {
+		this.id = setTimeout(() => this.setState({ redirect: true }), 2500);
+	}
 
-  componentWillUnmount() {
-    clearTimeout(this.id);
-  }
+	componentWillUnmount() {
+		clearTimeout(this.id);
+	}
 
-  render() {
-    return this.state.redirect ? (
-      <Redirect to="/game" />
-    ) : (
-      <div>
-        <LoadingBar />
-      </div>
-    );
-  }
+	render() {
+		const { isLoggedIn } = this.props;
+		const { redirect } = this.state;
+		if (isLoggedIn && redirect) {
+			return <Redirect to="/game" />;
+		} else if (!isLoggedIn && redirect) {
+			return <Redirect to="/userauth" />;
+		} else {
+			return (
+				<div>
+					<LoadingBar />
+				</div>
+			);
+		}
+	}
 }
 
 export default Transition;

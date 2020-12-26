@@ -61,7 +61,7 @@ const SplashScreen = () => {
             alt="logo"
             className="img-fluid"
             src='/images/Logo.png'
-            style={{ margin: "auto", verticalAlign: "baseline" }}
+            style={{ margin: " 3em auto", verticalAlign: "baseline"}}
           ></img>
         </Container>
       </motion.div>)}
