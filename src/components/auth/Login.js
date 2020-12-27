@@ -32,14 +32,15 @@ class Login extends Component {
 			)
 			.then((resp) => {
 				if (resp.data.status === 'created'){
-					this.props.history.push("/loading");
+					this.props.handleLogin(resp.data)
+					this.props.history.push("/dashboard");
 				} else {
 					this.setState({
-						loginErrors: resp
+						loginErrors: resp.data
 					})
+				
 				}
 			})
-			.catch((error) => console.log('login error', error))
 			
 	}
 

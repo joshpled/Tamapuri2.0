@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Login from '../components/auth/Login';
+import {Redirect} from 'react-router-dom'
 import Registration from '../components/auth/Registration';
 import { Container, Jumbotron } from 'react-bootstrap';
 import '../styles/canvas.css';
@@ -7,6 +8,8 @@ import '../styles/canvas.css';
 export class UserAuth extends Component {
 	
 	render() {
+		if (Object.keys(this.props.user).length === 0 ) {
+			debugger
 		return (
 			<div>
 				<Container
@@ -27,7 +30,7 @@ export class UserAuth extends Component {
 						</Container>
 					</Jumbotron>
 					
-					<Login />
+					<Login handleLogin={this.props.handleLogin}/>
                     <Jumbotron fluid>
 						<Container style={{marginTop: '20px'}}>
 							<p className="font-weight-bold">
@@ -40,7 +43,10 @@ export class UserAuth extends Component {
 				</Container>
 			</div>
 		);
+	} else {
+return <Redirect to='/dashboard'/>
 	}
+}
 }
 
 

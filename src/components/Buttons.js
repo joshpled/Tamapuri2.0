@@ -15,6 +15,7 @@ import {
 } from "react-bootstrap";
 
 export default class Buttons extends Component {
+  
   clickChange = (e) => {
     e.preventDefault();
     const itemValue = parseInt(e.target.getAttribute("data-value"));

@@ -59,11 +59,13 @@ class NewPetForm extends Component {
                 velocity: 200,
               }}
             >
+            
               <Form
                 onSubmit={(e) => {
                   this.handleSubmit(e);
                 }}
               >
+              <h1>{this.props.user.user}</h1>
                 <Form.Control
                   value={this.state.name}
                   id="entername"
