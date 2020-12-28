@@ -37,7 +37,7 @@ class Registration extends Component {
 			)
 			.then((resp) => {
 				if (resp.data.status === 'created') {
-					this.props.history.push("/");
+					this.props.handleLogin(resp.data)
 				} else {
 					this.setState({
 						registrationErrors: resp

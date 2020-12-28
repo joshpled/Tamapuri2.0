@@ -2,7 +2,7 @@ export default function userReducer(
 	state = { loggedInStatus: 'NOT_LOGGED_IN', user: {} },
 	action
 ) {
-	//debugger;
+	// debugger;
 	switch (action.type) {
 		case 'SET_USER':
 			return {

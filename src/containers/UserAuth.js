@@ -33,7 +33,7 @@ export class UserAuth extends Component {
 									<p className="font-weight-bold">Sign Up Here!</p>
 								</Container>
 							</Jumbotron>
-							<Registration />
+							<Registration handleLogin={this.props.handleLogin}/>
 						</Container>
 					</Container>
 				</div>
