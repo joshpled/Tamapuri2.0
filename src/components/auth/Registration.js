@@ -25,7 +25,7 @@ class Registration extends Component {
 		e.preventDefault();
 		axios
 			.post(
-				`${url}/registrations/`,
+				`${url}registrations/`,
 				{
 					user: {
 						email: email,

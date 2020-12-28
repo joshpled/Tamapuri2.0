@@ -24,7 +24,7 @@ class Login extends Component {
 		e.preventDefault();
 		axios
 			.post(
-				`${url}/sessions/`,
+				`${url}sessions/`,
 				{
 					user: {
 						email: email,

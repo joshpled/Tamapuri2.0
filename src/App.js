@@ -23,7 +23,7 @@ class App extends Component {
 
 	checkLoginStatus() {
 		axios
-			.get(`${url}/logged_in/`, { withCredentials: true })
+			.get(`${url}logged_in/`, { withCredentials: true })
 			.then((response) => {
 				// //debugger
 				if (
@@ -56,7 +56,7 @@ class App extends Component {
 	handleLogout() {
 		// //debugger
 		axios
-			.delete(`${url}/logout/`, { withCredentials: true })
+			.delete(`${url}logout/`, { withCredentials: true })
 			.then((response) => {
 				this.props.clearUser();
 				this.props.history.push('/');
