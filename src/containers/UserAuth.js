@@ -44,4 +44,4 @@ export class UserAuth extends Component {
 	}
 }
 
-export default UserAuth;
+export default UserAuth

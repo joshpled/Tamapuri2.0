@@ -3,6 +3,9 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom'
 import {Form, Button} from 'react-bootstrap'
 
+import { config } from '../../Constants';
+var url = config.url.AUTH_URL;
+
 class Login extends Component {
 	constructor(props) {
 		super(props);
@@ -21,7 +24,7 @@ class Login extends Component {
 		e.preventDefault();
 		axios
 			.post(
-				'http://localhost:3090/sessions',
+				`${url}/sessions/`,
 				{
 					user: {
 						email: email,
@@ -40,7 +43,6 @@ class Login extends Component {
 				
 				}
 			})
-			
 	}
 
 	handleChange(e) {

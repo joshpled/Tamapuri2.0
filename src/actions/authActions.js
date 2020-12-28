@@ -9,4 +9,3 @@ export const clearUser = () => {
 		dispatch({ type: 'CLEAR_USER'});
 	};
 };
-

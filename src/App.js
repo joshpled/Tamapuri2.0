@@ -10,6 +10,9 @@ import axios from 'axios';
 import { storeUser, clearUser } from './actions/authActions';
 import NewPetForm from './containers/NewPetForm';
 
+import { config } from '../../Constants';
+var url = config.url.AUTH_URL;
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -20,7 +23,7 @@ class App extends Component {
 
 	checkLoginStatus() {
 		axios
-			.get('http://localhost:3090/logged_in', { withCredentials: true })
+			.get(`${url}/logged_in/`, { withCredentials: true })
 			.then((response) => {
 				// //debugger
 				if (
@@ -53,7 +56,7 @@ class App extends Component {
 	handleLogout() {
 		// //debugger
 		axios
-			.delete('http://localhost:3090/logout', { withCredentials: true })
+			.delete(`${url}/logout/`, { withCredentials: true })
 			.then((response) => {
 				this.props.clearUser();
 				this.props.history.push('/');

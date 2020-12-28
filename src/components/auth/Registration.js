@@ -3,6 +3,9 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
+import { config } from '../../Constants';
+var url = config.url.AUTH_URL;
+
 class Registration extends Component {
 	constructor(props) {
 		super(props);
@@ -22,7 +25,7 @@ class Registration extends Component {
 		e.preventDefault();
 		axios
 			.post(
-				'http://localhost:3090/registrations',
+				`${url}/registrations/`,
 				{
 					user: {
 						email: email,
