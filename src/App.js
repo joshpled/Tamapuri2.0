@@ -10,7 +10,7 @@ import axios from 'axios';
 import { storeUser, clearUser } from './actions/authActions';
 import NewPetForm from './containers/NewPetForm';
 
-import { config } from '../../Constants';
+import { config } from './Constants';
 var url = config.url.AUTH_URL;
 
 class App extends Component {
