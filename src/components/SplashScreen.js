@@ -20,7 +20,7 @@ function useInterval(callback, delay) {
 }
 
 const SplashScreen = (props) => {	
-	debugger
+	//debugger
 	const [loading, setLoading] = useState(true);
 	const [done, setDone] = useState(true);
 
@@ -35,7 +35,7 @@ const SplashScreen = (props) => {
 	useInterval(() => {
 		setDone(!done);
 	}, 2500);
-
+	
 	if (loading) {
 		return (
 			<div>

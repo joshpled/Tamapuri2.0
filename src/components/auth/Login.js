@@ -33,7 +33,6 @@ class Login extends Component {
 			.then((resp) => {
 				if (resp.data.status === 'created'){
 					this.props.handleLogin(resp.data)
-					this.props.history.push("/dashboard");
 				} else {
 					this.setState({
 						loginErrors: resp.data

@@ -5,9 +5,10 @@ import DisplayCanvas from './containers/DisplayCanvas';
 import SplashScreen from './components/SplashScreen';
 import Dashboard from './components/Dashboard';
 import UserAuth from './containers/UserAuth';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { storeUser, clearUser } from './actions/authActions';
+import NewPetForm from './containers/NewPetForm';
 
 class App extends Component {
 	constructor(props) {
@@ -21,7 +22,7 @@ class App extends Component {
 		axios
 			.get('http://localhost:3090/logged_in', { withCredentials: true })
 			.then((response) => {
-				// debugger
+				// //debugger
 				if (
 					response.data.logged_in === true &&
 					this.props.loggedInStatus === 'NOT_LOGGED_IN'
@@ -30,11 +31,13 @@ class App extends Component {
 						loggedInStatus: 'LOGGED_IN',
 						user: response.data.user,
 					});
+					console.log(this.props.state);
 					this.props.history.push('/dashboard');
 				} else if (
 					response.data.logged_in === false &&
 					this.props.loggedInStatus === 'LOGGED_IN'
 				) {
+					console.log(this.props.state);
 					this.props.storeUser({ loggedInStatus: 'NOT_LOGGED_IN', user: {} });
 				}
 			})
@@ -48,12 +51,12 @@ class App extends Component {
 	}
 
 	handleLogout() {
-		// debugger
+		// //debugger
 		axios
 			.delete('http://localhost:3090/logout', { withCredentials: true })
 			.then((response) => {
 				this.props.clearUser();
-				this.props.history.push('/')
+				this.props.history.push('/');
 			})
 			.catch((error) => {
 				console.log('logout error', error);
@@ -62,61 +65,62 @@ class App extends Component {
 
 	handleLogin(data) {
 		this.props.storeUser(data);
+		return (<Redirect to="/dashboard"/>)
 	}
 
 	render() {
 		return (
-			<Router>
+			<BrowserRouter>
 				<Switch>
-					<div>
-						<Route exact path="/game" component={DisplayCanvas} />
-						<Route
-							exact
-							path="/"
-							render={(props) => (
-								<SplashScreen
-									{...props}
-									isLoggedIn={this.props.loggedInStatus}
-								/>
-							)}
-						/>
-						<Route
-							exact
-							path="/dashboard"
-							render={(props) => (
-								<Dashboard
-									{...props}
-									user={this.props.user}
-									isLoggedIn={this.props.loggedInStatus}
-									checkLoginStatus={this.checkLoginStatus}
-									handleLogout={this.handleLogout}
-								/>
-							)}
-						/>
-						<Route
-							exact
-							path="/loading"
-							render={(props) => (
-								<Transition {...props} isLoggedIn={this.props.loggedInStatus} />
-							)}
-						/>
-						<Route
-							exact
-							path="/userauth"
-							render={(props) => (
-								<UserAuth
-									{...props}
-									handleLogin={this.handleLogin}
-									isLoggedIn={this.props.loggedInStatus}
-									user={this.props.user}
-									storeUser={this.props.storeUser}
-									checkLoginStatus={this.checkLoginStatus}
-								/>
-							)}
-						/>
-					</div>
+					<Route exact path="/game" component={DisplayCanvas} />
+					<Route
+						exact
+						path="/"
+						render={(props) => (
+							<SplashScreen
+								{...props}
+								isLoggedIn={this.props.loggedInStatus}
+								user={this.props.user}
+							/>
+						)}
+					/>
+					<Route
+						exact
+						path="/dashboard"
+						render={(props) => (
+							<Dashboard
+								{...props}
+								user={this.props.user}
+								isLoggedIn={this.props.loggedInStatus}
+								checkLoginStatus={this.checkLoginStatus}
+								handleLogout={this.handleLogout}
+							/>
+						)}
+					/>
+					<Route
+						exact
+						path="/loading"
+						render={(props) => (
+							<Transition {...props} isLoggedIn={this.props.loggedInStatus} />
+						)}
+					/>
+					<Route
+						exact
+						path="/userauth"
+						render={(props) => (
+							<UserAuth
+								{...props}
+								handleLogin={this.handleLogin}
+								isLoggedIn={this.props.loggedInStatus}
+								user={this.props.user}
+								storeUser={this.props.storeUser}
+								checkLoginStatus={this.checkLoginStatus}
+							/>
+						)}
+					/>
 				</Switch>
-			</Router>
+				<Route exact path='/name' component={NewPetForm} />
+			</BrowserRouter>
 		);
 	}
 }

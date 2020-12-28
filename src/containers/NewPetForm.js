@@ -65,7 +65,7 @@ class NewPetForm extends Component {
                   this.handleSubmit(e);
                 }}
               >
-              <h1>{this.props.user.user}</h1>
+              {/* <h1>{this.props.user.user}</h1> */}
                 <Form.Control
                   value={this.state.name}
                   id="entername"
