@@ -40,8 +40,7 @@ class Login extends Component {
 					this.setState({
 						loginErrors: resp.data
 					})
-					console.log(resp)
-				
+					console.log(this.state.loginErrors)
 				}
 			})
 	}
