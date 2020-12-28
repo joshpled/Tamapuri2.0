@@ -24,7 +24,7 @@ class Login extends Component {
 		e.preventDefault();
 		axios
 			.post(
-				`${url}sessions/`,
+				`${url}sessions`,
 				{
 					user: {
 						email: email,
@@ -40,6 +40,7 @@ class Login extends Component {
 					this.setState({
 						loginErrors: resp.data
 					})
+					console.log(resp)
 				
 				}
 			})
