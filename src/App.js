@@ -14,6 +14,7 @@ import { config } from './Constants';
 var url = config.url.AUTH_URL;
 
 class App extends Component {
+	
 	constructor(props) {
 		super(props);
 		this.handleLogin = this.handleLogin.bind(this);
@@ -25,19 +26,19 @@ class App extends Component {
 		axios
 			.get(`${url}logged_in/`, { withCredentials: true })
 			.then((response) => {
-				// //debugger
+				// debugger
 				if (
-					response.data.logged_in === true &&
+					Object.keys(response.data).length > 0 &&
 					this.props.loggedInStatus === 'NOT_LOGGED_IN'
 				) {
 					this.props.storeUser({
 						loggedInStatus: 'LOGGED_IN',
-						user: response.data.user,
+						user: response.data,
 					});
 					console.log(this.props.state);
 					this.props.history.push('/dashboard');
 				} else if (
-					response.data.logged_in === false &&
+					Object.keys(response.data).length === 0 &&
 					this.props.loggedInStatus === 'LOGGED_IN'
 				) {
 					console.log(this.props.state);
@@ -67,8 +68,9 @@ class App extends Component {
 	}
 
 	handleLogin(data) {
+		// debugger
 		this.props.storeUser(data);
-		return (<Redirect to="/dashboard"/>)
+		return <Redirect to="/dashboard" />;
 	}
 
 	render() {
@@ -122,7 +124,11 @@ class App extends Component {
 						)}
 					/>
 				</Switch>
-				<Route exact path='/name' component={NewPetForm} />
+				<Route
+					exact
+					path="/name"
+					render={(props) => <NewPetForm {...props} user={this.props.user} />}
+				/>
 			</BrowserRouter>
 		);
 	}

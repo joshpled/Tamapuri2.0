@@ -33,8 +33,8 @@ class Login extends Component {
 				},
 				{ withCredentials: true }
 			)
-			.then((resp) => {
-				if (resp.data.status === 'created'){
+			.then((resp) => { 
+				if (Object.keys(resp.data).length > 0){
 					this.props.handleLogin(resp.data)
 				} else {
 					this.setState({

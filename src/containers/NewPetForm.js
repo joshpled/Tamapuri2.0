@@ -21,7 +21,7 @@ class NewPetForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.createNewPet(this.state.name);
+    this.props.createNewPet(this.state.name, this.props.user);
     this.props.history.push("/loading");
     this.setState({
       name: "",

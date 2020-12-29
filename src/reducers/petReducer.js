@@ -1,4 +1,5 @@
 export default function petReducer(state = { pet: {}, loading: false }, action){
+  // debugger
     switch (action.type) {
       case "CREATING_PET":
         return {
@@ -25,6 +26,18 @@ export default function petReducer(state = { pet: {}, loading: false }, action){
           pet: action.payload,
           loading: false,
         };
+
+        case "LOADING":
+        return {
+          ...state, 
+          loading: true
+        }
+
+      case "GET_PETS":
+        return {
+          pet: action.payload,
+          loading: false 
+        }
   
       default:
         return state;

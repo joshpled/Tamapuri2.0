@@ -1,16 +1,17 @@
 import { config } from '../Constants';
 var url = config.url.BASE_URL;
 
-export const createNewPet = (name) => {
+export const createNewPet = (name,userId) => {
 	let data = {
 		name: name.charAt(0).toUpperCase() + name.slice(1),
+		user_id: userId.id
 	};
 	return (dispatch) => {
 		dispatch({ type: 'CREATING_PET' });
 		fetch(url + 'pets/', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ pet: data }),
+			body: JSON.stringify({ pet: data}),
 		})
 			.then((response) => response.json())
 			.then((data) => dispatch({ type: 'CREATE_PET', payload: data }))
