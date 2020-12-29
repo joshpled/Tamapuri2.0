@@ -14,6 +14,7 @@ import NameStatusBar from "../components/NameStatusBar";
 class DisplayCanvas extends Component {
   render() {
     const {pet, loading} = this.props.pet;
+    // debugger
     if (Object.keys(pet).length !== 0) {
       return (
         <div>
@@ -39,7 +40,7 @@ class DisplayCanvas extends Component {
               borderWidth: "3px",
             }}>
               <div style={{ height: "10px" }} />
-              <NameStatusBar pet={pet} />
+              <NameStatusBar pet={pet} user={this.props.user}/>
               <div style={{ height: "60px" }} />
               <Sprite />
               <StatusBars pet={pet} loading={loading} />
@@ -65,9 +66,11 @@ class DisplayCanvas extends Component {
 
 
 const mapStateToProps = (state) => {
+  
   return {
     pet: state.pet,
     loading: state.loading,
+    user: state.user.user
   };
 };
 

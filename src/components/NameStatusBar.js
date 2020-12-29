@@ -4,6 +4,7 @@ import Hamburger from "hamburger-react";
 import Menu from "./Menu";
 
 export default class NameStatusBar extends Component {
+  
     
   constructor(props, context) {
     super(props, context);
@@ -29,12 +30,13 @@ export default class NameStatusBar extends Component {
 
   render() {
     const { pet } = this.props;
-
+// debugger
     return (
       <div>
         <Container>
           <div style={{ float: "left" }}>
             <h1>{pet.name}</h1>
+            <h2>{this.props.user.email}</h2>
           </div>
           <div style={{ float: "right" }}>
             <span onClick={() => this.onMenuClick()}>

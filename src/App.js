@@ -35,7 +35,6 @@ class App extends Component {
 						loggedInStatus: 'LOGGED_IN',
 						user: response.data,
 					});
-					console.log(this.props.state);
 					this.props.history.push('/dashboard');
 				} else if (
 					Object.keys(response.data).length === 0 &&

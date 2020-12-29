@@ -12,7 +12,7 @@ export default function Dashboard(props) {
             <h1 style={{color: 'white'}}>HELLO {props.user.email}</h1>
             <Button onClick={props.handleLogout}>LogOut</Button>
             <Button onClick={() => props.history.push('/name')}>New Name</Button>
-            {props.user.pets.map((pet) => <Button>{pet.name}{pet.id}</Button>)}
+            {props.user.pets.map((pet) => <Button key={pet.id}>{pet.name}</Button>)}
         </div>
     ) 
 } else {
