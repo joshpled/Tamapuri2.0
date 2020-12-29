@@ -26,9 +26,8 @@ class App extends Component {
 		axios
 			.get(`${url}logged_in/`, { withCredentials: true })
 			.then((response) => {
-				// debugger
 				if (
-					Object.keys(response.data).length > 0 &&
+					response.data.logged_in === true &&
 					this.props.loggedInStatus === 'NOT_LOGGED_IN'
 				) {
 					this.props.storeUser({
@@ -37,7 +36,7 @@ class App extends Component {
 					});
 					this.props.history.push('/dashboard');
 				} else if (
-					Object.keys(response.data).length === 0 &&
+					response.data.logged_in === false &&
 					this.props.loggedInStatus === 'LOGGED_IN'
 				) {
 					console.log(this.props.state);
@@ -70,9 +69,11 @@ class App extends Component {
 		// debugger
 		this.props.storeUser(data);
 		return <Redirect to="/dashboard" />;
+		
 	}
 
 	render() {
+	
 		return (
 			<BrowserRouter>
 				<Switch>
@@ -134,6 +135,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
+	// debugger
 	return {
 		loggedInStatus: state.user.loggedInStatus,
 		user: state.user.user,

@@ -69,6 +69,7 @@ const SplashScreen = (props) => {
 			</div>
 		);
 	} else if (loading === false && props.isLoggedIn !== 'NOT_LOGGED_IN') {
+		// debugger
 		return <Redirect to="/dashboard" />;
 	} else {
 		return <Redirect to="/userAuth" />;

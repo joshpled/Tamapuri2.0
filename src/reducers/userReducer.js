@@ -8,7 +8,7 @@ export default function userReducer(
 			return {
 				...state,
 				loggedInStatus: 'LOGGED_IN',
-				user: action.payload.user,
+				user: action.payload,
 			};
 
 		case 'CLEAR_USER':

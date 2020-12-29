@@ -7,8 +7,8 @@ import '../styles/canvas.css';
 
 export class UserAuth extends Component {
 	render() {
-		if (Object.keys(this.props.user).length === 0) {
-			//debugger
+		if (this.props.isLoggedIn === "NOT_LOGGED_IN") {
+			
 			return (
 				<div>
 					<Container
@@ -39,6 +39,7 @@ export class UserAuth extends Component {
 				</div>
 			);
 		} else {
+			// debugger
 			return <Redirect to="/dashboard" />;
 		}
 	}
