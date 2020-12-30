@@ -68,7 +68,7 @@ const SplashScreen = (props) => {
 				</AnimatePresence>
 			</div>
 		);
-	} else if (loading === false && props.isLoggedIn !== 'NOT_LOGGED_IN') {
+	} else if (loading === false && props.user.logged_in === true) {
 		// debugger
 		return <Redirect to="/dashboard" />;
 	} else {

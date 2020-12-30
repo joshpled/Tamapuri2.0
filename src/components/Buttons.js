@@ -92,7 +92,7 @@ export default class Buttons extends Component {
             <Col>
               <center>
                 <Button
-                  value="boredom"
+                  value="fun"
                   onClick={(e) => this.clickChange(e)}
                   id="btn-colour-2"
                 >

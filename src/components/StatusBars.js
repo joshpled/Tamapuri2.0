@@ -14,13 +14,23 @@ const StatusBars = (props) => {
           style={barStyle}
         /><br />
         <ProgressBar
-          now={props.pet.boredom}
+          now={props.pet.fun}
           label={`Boredom ${props.pet.boredom}%`}
           style={barStyle}
         /><br />
         <ProgressBar
           now={props.pet.hunger}
           label={`Hunger ${props.pet.hunger}%`}
+          style={barStyle}
+        />
+        <ProgressBar
+          now={props.pet.hygiene}
+          label={`Hygiene ${props.pet.hygiene}%`}
+          style={barStyle}
+        />
+        <ProgressBar
+          now={props.pet.energy}
+          label={`Energy ${props.pet.energy}%`}
           style={barStyle}
         />
       </div>

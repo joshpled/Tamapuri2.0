@@ -10,19 +10,23 @@ export function newAmount(curr, value) {
 	return limitNumberWithinRange(calc, 0, 100);
 }
 
+export function calcEffect(){
+ console.log('hello')
+} 
+
 export function changeAttribute(attribute, itemValue, pet) {
   let data = {};
   console.log(data)
 	switch (attribute) {
-		case 'boredom':
+		case 'fun':
 			return (data = {
-				boredom: newAmount(pet.boredom, itemValue),
+				boredom: newAmount(pet.fun, itemValue),
 				hunger: newAmount(pet.hunger, itemValue),
 			});
 		case 'hunger':
 			return (data = {
 				hunger: newAmount(pet.hunger, itemValue),
-				boredom: newAmount(pet.boredom, itemValue),
+				boredom: newAmount(pet.fun, itemValue),
 			});
 		case 'health':
 			return (data = {
