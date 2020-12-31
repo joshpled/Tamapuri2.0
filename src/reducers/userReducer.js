@@ -1,17 +1,21 @@
-export default function userReducer(
-	state = { loggedInStatus: 'NOT_LOGGED_IN', user: {}, loading: false },
-	action
-) {
-	// debugger
+export default function userReducer(state = { loggedInStatus: false, user: {}, loading: false }, action) {
+	
 	switch (action.type) {
+		case 'GETTING_USER':
+			return {
+				...state,
+				loading: true,
+			};
+
 		case 'SET_USER':
 			return {
-				loggedInStatus: 'LOGGED_IN',
+				loggedInStatus: true,
 				user: action.payload,
+				loading: false,
 			};
 
 		case 'CLEAR_USER':
-			return { ...state, loggedInStatus: 'NOT_LOGGED_IN', user: {} };
+			return { ...state, loggedInStatus: false, user: {}, loading: false };
 
 		default:
 			return state;

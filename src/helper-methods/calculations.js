@@ -10,28 +10,30 @@ export function newAmount(curr, value) {
 	return limitNumberWithinRange(calc, 0, 100);
 }
 
-export function calcEffect(){
- console.log('hello')
-} 
+export function effectAmount(curr, value) {
+	let calc = curr - (value/Math.floor(Math.random() * 3));
+	return limitNumberWithinRange(calc, 0, 100);
+}
 
 export function changeAttribute(attribute, itemValue, pet) {
+	
   let data = {};
-  console.log(data)
+
 	switch (attribute) {
 		case 'fun':
 			return (data = {
-				boredom: newAmount(pet.fun, itemValue),
-				hunger: newAmount(pet.hunger, itemValue),
+				fun: newAmount(pet.fun, itemValue),
+				hunger: effectAmount(pet.hunger, itemValue),
 			});
 		case 'hunger':
 			return (data = {
 				hunger: newAmount(pet.hunger, itemValue),
-				boredom: newAmount(pet.fun, itemValue),
+				fun: effectAmount(pet.fun, itemValue),
 			});
 		case 'health':
 			return (data = {
 				health: newAmount(pet.health, itemValue),
-				hunger: newAmount(pet.hunger, itemValue),
+				hunger: effectAmount(pet.hunger, itemValue),
 			});
 		default:
 			return (data = { ...pet });

@@ -1,0 +1,12 @@
+
+.HeartsGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 40px);
+    justify-content: center;
+}
+.Heart {
+    width: 32px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    display: block;
+}

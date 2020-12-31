@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { withRouter } from 'react-router-dom'
-import {Form, Button} from 'react-bootstrap'
-
-import { config } from '../../Constants';
-var url = config.url.AUTH_URL;
+import { Form, Button } from 'react-bootstrap';
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			email: '',
-			password: '',
-			loginErrors: ''
+			password: ''
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,26 +16,7 @@ class Login extends Component {
 	handleSubmit(e) {
 		const { email, password } = this.state;
 		e.preventDefault();
-		axios
-			.post(
-				`${url}sessions`,
-				{
-					user: {
-						email: email,
-						password: password
-					},
-				},
-				{ withCredentials: true }
-			)
-			.then((resp) => {
-				if (resp.data.logged_in === true){
-					this.props.handleLogin(resp.data)
-				} else {
-					this.setState({
-						loginErrors: resp.data
-					})
-				}
-			})
+		this.props.handleLogin(email, password)
 	}
 
 	handleChange(e) {
@@ -60,7 +35,7 @@ class Login extends Component {
 						placeholder="Enter your email"
 						value={this.state.email}
 						onChange={this.handleChange}
-						style={{marginBottom: '.5em'}}
+						style={{ marginBottom: '.5em' }}
 						required
 					/>
 					<Form.Control
@@ -69,17 +44,17 @@ class Login extends Component {
 						placeholder="Password"
 						value={this.state.password}
 						onChange={this.handleChange}
-						style={{marginBottom: '.5em'}}
+						style={{ marginBottom: '.5em' }}
 						required
 					/>
-					
-					<Button type="submit" style={{marginTop: '10px'}}>Login</Button>
+
+					<Button type="submit" style={{ marginTop: '10px' }}>
+						Login
+					</Button>
 				</Form>
 			</div>
 		);
 	}
 }
 
-
-  
-export default withRouter(Login) 
+export default Login;

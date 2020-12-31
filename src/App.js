@@ -1,144 +1,103 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Transition from './containers/Transition';
-import DisplayCanvas from './containers/DisplayCanvas';
-import SplashScreen from './components/SplashScreen';
+import { Switch, Router, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { storeUser, clearUser, loginUser } from './actions/authActions';
 import Dashboard from './components/Dashboard';
 import UserAuth from './containers/UserAuth';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import axios from 'axios';
-import { storeUser, clearUser } from './actions/authActions';
 import NewPetForm from './containers/NewPetForm';
+import DisplayCanvas from './containers/DisplayCanvas'
 
 import { config } from './Constants';
 var url = config.url.AUTH_URL;
 
+const history = createBrowserHistory();
+
 class App extends Component {
-	
 	constructor(props) {
 		super(props);
+		this.state = {
+			authorized: false,
+		};
+		this.checkUser = this.checkUser.bind(this);
 		this.handleLogin = this.handleLogin.bind(this);
-		this.handleLogout = this.handleLogout.bind(this);
-		this.checkLoginStatus = this.checkLoginStatus.bind(this);
 	}
 
-	checkLoginStatus() {
-		axios
-			.get(`${url}logged_in/`, { withCredentials: true })
-			.then((response) => {
-				if (
-					response.data.logged_in === true &&
-					this.props.loggedInStatus === 'NOT_LOGGED_IN'
-				) {
-					this.props.storeUser({
-						loggedInStatus: 'LOGGED_IN',
-						user: response.data,
+	checkUser(loggedInStatus) {
+		fetch(url + 'logged_in/', {
+			method: 'GET',
+			headers: { 'Content-Type': 'application/json' },
+			credentials: 'include',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.logged_in === true && loggedInStatus === false) {
+					this.props.storeUser(data);
+					this.setState({
+						authorized: true,
 					});
-					this.props.history.push('/dashboard');
-				} else if (
-					response.data.logged_in === false &&
-					this.props.loggedInStatus === 'LOGGED_IN'
-				) {
-					console.log(this.props.state);
-					this.props.storeUser({ loggedInStatus: 'NOT_LOGGED_IN', user: {} });
+				} else if (data.logged_in === false && loggedInStatus === true) {
+					this.props.clearUser();
+					this.setState({
+						authorized: false,
+					});
 				}
 			})
 			.catch((error) => {
-				console.log('check login error', error);
+				console.log('LOGIN ERRORS:', error);
 			});
 	}
 
 	componentDidMount() {
-		this.checkLoginStatus();
+		this.checkUser(this.props.loggedInStatus);
 	}
 
-	handleLogout() {
-		// //debugger
-		axios
-			.delete(`${url}logout/`, { withCredentials: true })
-			.then((response) => {
-				this.props.clearUser();
-				this.props.history.push('/');
-			})
-			.catch((error) => {
-				console.log('logout error', error);
-			});
-	}
-
-	handleLogin(data) {
-		// debugger
-		this.props.storeUser(data);
-		return <Redirect to="/dashboard" />;
-		
+	handleLogin(email, password) {
+		this.props.loginUser(email, password);
+		history.push('/dashboard');
 	}
 
 	render() {
+		const { loggedInStatus, user, loading } = this.props;
 		return (
-			<BrowserRouter>
+			<Router history={history}>
 				<Switch>
-					<Route exact path="/game" component={DisplayCanvas} />
-					<Route
-						exact
-						path="/"
-						render={(props) => (
-							<SplashScreen
-								{...props}
-								isLoggedIn={this.props.loggedInStatus}
-								user={this.props.user.user}
-							/>
-						)}
-					/>
-					<Route
-						exact
-						path="/dashboard"
-						render={(props) => (
-							<Dashboard
-								{...props}
-								user={this.props.user}
-								isLoggedIn={this.props.loggedInStatus}
-								checkLoginStatus={this.checkLoginStatus}
-								handleLogout={this.handleLogout}
-							/>
-						)}
-					/>
-					<Route
-						exact
-						path="/loading"
-						render={(props) => (
-							<Transition {...props} isLoggedIn={this.props.loggedInStatus} />
-						)}
-					/>
-					<Route
-						exact
-						path="/userauth"
-						render={(props) => (
-							<UserAuth
-								{...props}
-								handleLogin={this.handleLogin}
-								isLoggedIn={this.props.loggedInStatus}
-								user={this.props.user}
-								storeUser={this.props.storeUser}
-								checkLoginStatus={this.checkLoginStatus}
-							/>
-						)}
-					/>
+					<Route exact path="/" render={(props) => <UserAuth {...props} handleLogin={this.handleLogin} />} />
+					{this.state.authorized && (
+						<Route
+							exact
+							path="/dashboard"
+							render={(props) => (
+								<Dashboard {...props} user={user} loggedInStatus={loggedInStatus} loading={loading} clearUser={this.props.clearUser} />
+							)}
+						/>
+					)}
+					{this.state.authorized && (
+						<Route
+							exact
+							path="/game"
+							render={(props) => (
+								<NewPetForm {...props} user={user} loggedInStatus={loggedInStatus} loading={loading} checkUser={this.checkUser} />
+							)}
+						/>
+					)}
+					{this.state.authorized && (
+						<Route
+							exact
+							path="/canvas"
+							render={(props) => (
+								<DisplayCanvas {...props} user={user} loggedInStatus={loggedInStatus} loading={loading} checkUser={this.checkUser} />
+							)}
+						/>
+					)}
 				</Switch>
-				<Route
-					exact
-					path="/name"
-					render={(props) => <NewPetForm {...props} user={this.props.user} />}
-				/>
-			</BrowserRouter>
+			</Router>
 		);
 	}
 }
 
-const mapStateToProps = (state) => {
-	// debugger
-	return {
-		loggedInStatus: state.user.loggedInStatus,
-		user: state.user.user,
-	};
-};
-
-export default connect(mapStateToProps, { storeUser, clearUser })(App);
+export default connect((state) => state.user, {
+	storeUser,
+	clearUser,
+	loginUser,
+})(App);

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
 import '../styles/canvas.css';
 
 function useInterval(callback, delay) {
@@ -68,11 +67,6 @@ const SplashScreen = (props) => {
 				</AnimatePresence>
 			</div>
 		);
-	} else if (loading === false && props.user.logged_in === true) {
-		// debugger
-		return <Redirect to="/dashboard" />;
-	} else {
-		return <Redirect to="/userAuth" />;
-	}
+	} 
 };
 export default SplashScreen;
