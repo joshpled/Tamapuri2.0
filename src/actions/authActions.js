@@ -22,21 +22,22 @@ export const clearUser = () => {
 };
 
 export const loginUser = (email, password) => {
-	let data = {
+	let loginData = {
 		email: email,
 		password: password,
 	};
 	
 	return (dispatch) => {
+		dispatch({ type: 'LOADING_USER'});
 		fetch(url + 'sessions/', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			credentials: 'include',
-			body: JSON.stringify({ user: data }),
+			body: JSON.stringify({ user: loginData }),
 		})
 			.then((response) => response.json())
-			.then((data) => {
-				dispatch({ type: 'SET_USER', data });
+			.then((json) => {
+				dispatch({ type: 'SET_USER', payload: json });
 			})
 			.catch((error) => console.log(error));
 	};

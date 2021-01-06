@@ -3,17 +3,19 @@ import '../styles/canvas.css';
 import { Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { motion } from 'framer-motion';
-import { Redirect } from 'react-router-dom';
 import { updatePet } from '../actions/petActions';
 import Buttons from '../components/Buttons';
 import StatusBars from '../components/StatusBars';
 import Sprite from '../components/Sprite';
-import LoadingBar from '../components/LoadingBar';
 import NameStatusBar from '../components/NameStatusBar';
 
 class DisplayCanvas extends Component {
 	render() {
 		const { pet, loading } = this.props.pet;
+		const { history } = this.props
+		if (Object.keys(pet).length === 0){
+			history.push('/')
+		}
 		return (
 			<div>
 				<motion.div

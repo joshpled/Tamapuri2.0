@@ -1,7 +1,7 @@
 import React from 'react';
 import {Heart} from './icons';
 
-export default function({hearts, maxHearts}) {
+export default function Hearts ({hearts, maxHearts}) {
 
   //Create an array of Heart icons out of the `maxHearts` count
   const heartElements = Array(maxHearts).fill().map(( h, index) => {

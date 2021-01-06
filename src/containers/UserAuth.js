@@ -7,6 +7,7 @@ import '../styles/canvas.css';
 export class UserAuth extends Component {
 
 	render() {
+	
 		return (
 			<div>
 				<Container

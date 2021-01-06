@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@webpack-cli/init": "^1.1.1",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta1",
     "framer-motion": "^2.9.5",
@@ -19,6 +20,7 @@
     "react-sprite-animator": "^2.0.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -44,5 +46,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "npm-install-webpack-plugin": "^4.0.5",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.3.1"
   }
 }

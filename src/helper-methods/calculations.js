@@ -18,7 +18,7 @@ export function effectAmount(curr, value) {
 export function changeAttribute(attribute, itemValue, pet) {
 	
   let data = {};
-
+  
 	switch (attribute) {
 		case 'fun':
 			return (data = {

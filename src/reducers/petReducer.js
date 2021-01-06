@@ -33,7 +33,7 @@ export default function petReducer(state = { pet: {}, loading: false }, action){
           loading: true
         }
 
-      case "GET_PETS":
+      case "GET_PET":
         return {
           pet: action.payload,
           loading: false 
