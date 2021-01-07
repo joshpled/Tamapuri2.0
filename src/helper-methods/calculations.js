@@ -19,31 +19,37 @@ function shuffle(a) {
 }
 
 export function newAmount(curr, value) {
-	let calc = curr + value;
+	const calc = curr + value;
 	return limitNumberWithinRange(calc, 0, 100);
 }
 
 export function effectAmount(curr, value) {
 	let randArr = shuffle(arr);
 	let number = Math.floor(Math.random() * randArr.length);
-	let calc = curr - value / randArr[number];
+	let index = randArr[number];
+	let calc = curr;
+	if (index !== 0) {
+		calc = curr - value / randArr[number];
+	}
+	console.log(calc)
 	return limitNumberWithinRange(calc, 0, 100);
 }
 
 export function changeAttribute(attribute, itemValue, pet) {
 	let data = {};
-
 	switch (attribute) {
 		case 'fun':
 			return (data = {
 				fun: newAmount(pet.fun, itemValue),
 				hunger: effectAmount(pet.hunger, itemValue),
-				energy: effectAmount(pet.energy, itemValue)
+				energy: effectAmount(pet.energy, itemValue),
+				hygiene: effectAmount(pet.hygiene, itemValue),
 			});
 		case 'hunger':
 			return (data = {
 				hunger: newAmount(pet.hunger, itemValue),
 				fun: effectAmount(pet.fun, itemValue),
+				energy: effectAmount(pet.energy, itemValue)
 			});
 		case 'health':
 			return (data = {

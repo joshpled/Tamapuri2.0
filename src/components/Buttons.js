@@ -89,7 +89,7 @@ export default class Buttons extends Component {
 							</center>
 						</Col>
 						<Col>
-            <center>
+							<center>
 								<OverlayTrigger
 									trigger="click"
 									placement={'top'}
