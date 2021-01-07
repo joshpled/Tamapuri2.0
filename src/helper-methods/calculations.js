@@ -5,25 +5,40 @@ export function limitNumberWithinRange(num, min, max) {
 	return Math.min(Math.max(parsed, MIN), MAX);
 }
 
+let arr = Array(6000).fill(3).concat(Array(3000).fill(2), Array(100).fill(1), Array(5000).fill(0));
+
+function shuffle(a) {
+	var j, x, i;
+	for (i = a.length - 1; i > 0; i--) {
+		j = Math.floor(Math.random() * (i + 1));
+		x = a[i];
+		a[i] = a[j];
+		a[j] = x;
+	}
+	return a;
+}
+
 export function newAmount(curr, value) {
 	let calc = curr + value;
 	return limitNumberWithinRange(calc, 0, 100);
 }
 
 export function effectAmount(curr, value) {
-	let calc = curr - (value/Math.floor(Math.random() * 3));
+	let randArr = shuffle(arr);
+	let number = Math.floor(Math.random() * randArr.length);
+	let calc = curr - value / randArr[number];
 	return limitNumberWithinRange(calc, 0, 100);
 }
 
 export function changeAttribute(attribute, itemValue, pet) {
-	
-  let data = {};
-  
+	let data = {};
+
 	switch (attribute) {
 		case 'fun':
 			return (data = {
 				fun: newAmount(pet.fun, itemValue),
 				hunger: effectAmount(pet.hunger, itemValue),
+				energy: effectAmount(pet.energy, itemValue)
 			});
 		case 'hunger':
 			return (data = {

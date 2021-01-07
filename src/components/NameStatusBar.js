@@ -20,8 +20,8 @@ export default class NameStatusBar extends Component {
     });
   };
 
-  menuModalRef = ({ handleShow }) => {
-    this.showModal = handleShow;
+  menuModalRef =  (obj) => {
+    this.showModal = obj && obj.handleShow 
   };
 
   onMenuClick = () => {
@@ -35,8 +35,7 @@ export default class NameStatusBar extends Component {
       <div>
         <Container>
           <div style={{ float: "left" }}>
-            <h1>{pet.name}</h1>
-            <h2>{this.props.user.email}</h2>
+            {pet && <h1>{pet.name}</h1>}
           </div>
           <div style={{ float: "right" }}>
             <span onClick={() => this.onMenuClick()}>

@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
-
-import { config } from '../../Constants';
-var url = config.url.AUTH_URL;
 
 class Registration extends Component {
 	constructor(props) {
@@ -22,29 +18,10 @@ class Registration extends Component {
 
 	handleSubmit(e) {
 		const { email, password, password_confirmation } = this.state;
+		const {registerUser, history} = this.props
 		e.preventDefault();
-		axios
-			.post(
-				`${url}registrations/`,
-				{
-					user: {
-						email: email,
-						password: password,
-						password_confirmation: password_confirmation,
-					},
-				},
-				{ withCredentials: true }
-			)
-			.then((resp) => {
-				if (resp.data.status === 'created') {
-					this.props.handleLogin(resp.data)
-				} else {
-					this.setState({
-						registrationErrors: resp
-					})
-				}
-			})
-			.catch((error) => console.log('registration error', error));
+		registerUser(email, password, password_confirmation)
+		history.push('/dashboard')
 	}
 
 	handleChange(e) {

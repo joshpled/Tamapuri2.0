@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
 class Login extends Component {
@@ -16,7 +17,8 @@ class Login extends Component {
 	handleSubmit(e) {
 		const { email, password } = this.state;
 		e.preventDefault();
-		this.props.handleLogin(email, password)
+		this.props.loginUser(email, password)
+		this.props.history.push('/dashboard')
 	}
 
 	handleChange(e) {
@@ -57,4 +59,4 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+export default withRouter(Login);

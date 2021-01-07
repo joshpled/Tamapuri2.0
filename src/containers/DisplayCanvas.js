@@ -12,10 +12,6 @@ import NameStatusBar from '../components/NameStatusBar';
 class DisplayCanvas extends Component {
 	render() {
 		const { pet, loading } = this.props.pet;
-		const { history } = this.props
-		if (Object.keys(pet).length === 0){
-			history.push('/')
-		}
 		return (
 			<div>
 				<motion.div

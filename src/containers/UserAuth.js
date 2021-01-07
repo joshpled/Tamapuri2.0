@@ -26,7 +26,7 @@ export class UserAuth extends Component {
 							</Container>
 						</Jumbotron>
 
-						<Login handleLogin={this.props.handleLogin} />
+						<Login loginUser={this.props.loginUser} />
 
 						<Jumbotron fluid>
 							<Container style={{ marginTop: '20px' }}>
@@ -34,7 +34,7 @@ export class UserAuth extends Component {
 							</Container>
 						</Jumbotron>
 
-						<Registration />
+						<Registration loginUser={this.props.loginUser} registerUser={this.props.registerUser}/>
 					</Container>
 				</Container>
 			</div>

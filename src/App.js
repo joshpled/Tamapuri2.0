@@ -2,19 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Router, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { storeUser, clearUser, loginUser } from './actions/authActions';
+import { storeUser, clearUser, loginUser, registerUser } from './actions/authActions';
 import {getPet} from './actions/petActions'
 import Dashboard from './components/Dashboard';
 import UserAuth from './containers/UserAuth';
-import NewPetForm from './containers/NewPetForm';
+import NewPetForm from './components/NewPetForm';
 import DisplayCanvas from './containers/DisplayCanvas'
-import { v4 as uuidv4 } from 'uuid';
 
 import { config } from './Constants';
 var url = config.url.AUTH_URL;
 
 const history = createBrowserHistory();
-const randNumb = uuidv4()
 
 class App extends Component {
 		constructor(props) {
@@ -23,8 +21,6 @@ class App extends Component {
 			authorized: false,
 		};
 		this.checkUser = this.checkUser.bind(this);
-		this.handleLogin = this.handleLogin.bind(this);
-		this.handleLogout = this.handleLogout.bind(this)
 	}
 
 	checkUser(loggedInStatus) {
@@ -56,28 +52,18 @@ class App extends Component {
 		this.checkUser(this.props.loggedInStatus);
 	}
 
-	handleLogin(email, password) {
-		this.props.loginUser(email, password);
-		history.push('/dashboard');
-	}
-
-	handleLogout(){
-		this.props.clearUser()
-		history.push('/')
-	}
-
 	render() {
-		const { loggedInStatus, user, loading, getPet } = this.props;
+		const { loggedInStatus, user, loading, getPet, registerUser, loginUser, clearUser } = this.props;
 		return (
 			<Router history={history}>
 				<Switch>
-					<Route exact path="/" render={(props) => <UserAuth {...props} handleLogin={this.handleLogin} checkUser={this.checkUser} loggedInStatus={loggedInStatus}/>} />
+					<Route exact path="/" render={(props) => <UserAuth {...props} loginUser={loginUser} checkUser={this.checkUser} loggedInStatus={loggedInStatus} registerUser={registerUser}/>} />
 					{this.state.authorized && (
 						<Route
 							exact
 							path="/dashboard"
 							render={(props) => (
-								<Dashboard {...props} key={uuidv4()} loggedInStatus={loggedInStatus} loading={loading} clearUser={this.handleLogout} getPet={getPet} />
+								<Dashboard {...props} user={user} loggedInStatus={loggedInStatus} loading={loading} clearUser={clearUser} getPet={getPet} />
 							)}
 						/>
 					)}
@@ -109,5 +95,6 @@ export default connect((state) => state.user, {
 	storeUser,
 	clearUser,
 	loginUser,
-	getPet
+	getPet, 
+	registerUser
 })(App);

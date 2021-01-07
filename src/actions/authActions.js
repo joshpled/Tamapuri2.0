@@ -26,9 +26,9 @@ export const loginUser = (email, password) => {
 		email: email,
 		password: password,
 	};
-	
+
 	return (dispatch) => {
-		dispatch({ type: 'LOADING_USER'});
+		dispatch({ type: 'LOADING_USER' });
 		fetch(url + 'sessions/', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -37,8 +37,34 @@ export const loginUser = (email, password) => {
 		})
 			.then((response) => response.json())
 			.then((json) => {
+				if (json.logged_in === true){
 				dispatch({ type: 'SET_USER', payload: json });
+				}
 			})
 			.catch((error) => console.log(error));
+	};
+};
+
+export const registerUser = (email, password, password_confirmation) => {
+	let registerData = {
+		email: email,
+		password: password,
+		password_confirmation: password_confirmation,
+	};
+
+	return (dispatch) => {
+		dispatch({ type: 'LOADING_USER' });
+		fetch(url + 'registrations/', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			credentials: 'include',
+			body: JSON.stringify({ user: registerData }),
+		}).then((response) => response.json())
+			.then((data) => {
+				if (data.status === 'created') {
+					dispatch({ type: 'SET_USER', payload: data.user });
+				}
+			})
+			.catch((error) => console.log('registration error', error));
 	};
 };
