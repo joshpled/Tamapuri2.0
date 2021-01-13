@@ -4,7 +4,6 @@ import '../styles/canvas.css';
 import NameStatusBar from './NameStatusBar';
 
 const Dashboard = (props) => {
-	debugger
 	return (
 		<Container
 			id="canvasSetting"
