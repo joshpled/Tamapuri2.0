@@ -1,4 +1,4 @@
-import { config } from '../Constants';
+import { config } from './Constants';
 var url = config.url.BASE_URL;
 
 export const getItems = () => {

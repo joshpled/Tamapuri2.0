@@ -1,0 +1,19 @@
+#squareSetting {
+	background-color: #9bebf5e3;
+	min-height: 100vh;
+	max-width: 540px;
+	border-style: ridge;
+	border-width: 3px;
+}
+
+#imgSetting {
+	max-width: 70%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10vh;
+}
+
+#buttonSetting {
+	margin: 0 2px;
+}

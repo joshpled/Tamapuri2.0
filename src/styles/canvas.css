@@ -1,6 +1,7 @@
-#canvasSetting{
-    background-color: #9bebf5e3;
-    min-height: 100vh;
+#canvasSetting {
+	background-color: #9bebf5e3;
+	min-height: 100vh;
     max-width: 540px;
+	border-style: ridge;
+	border-width: 3px;
 }
-

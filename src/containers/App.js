@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Router, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { storeUser, clearUser, loginUser, registerUser } from './actions/authActions';
-import {getPet} from './actions/petActions'
-import Dashboard from './components/Dashboard';
-import UserAuth from './containers/UserAuth';
-import NewPetForm from './components/NewPetForm';
-import DisplayCanvas from './containers/DisplayCanvas'
+import { storeUser, clearUser, loginUser, registerUser } from '../actions/authActions';
+import {getPet} from '../actions/petActions'
+import Dashboard from '../components/Dashboard';
+import UserAuth from './UserAuth';
+import NewPetForm from '../components/NewPetForm';
+import DisplayCanvas from './DisplayCanvas'
 
-import { config } from './Constants';
+import { config } from '../Constants';
 var url = config.url.AUTH_URL;
 
 const history = createBrowserHistory();

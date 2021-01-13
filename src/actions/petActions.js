@@ -1,4 +1,4 @@
-import { config } from '../Constants';
+import { config } from './Constants';
 var url = config.url.BASE_URL;
 
 export const createNewPet = (name, userId) => {
@@ -40,8 +40,12 @@ export const updatePet = (pet, petId) => {
 export const getPet = (petId) => {
 	return (dispatch) => {
 		dispatch({ type: 'LOADING' });
+		console.log('c');
 		fetch(url + 'pets/' + petId)
 			.then((resp) => resp.json())
-			.then((json) => dispatch({ type: 'GET_PET', payload: json }));
+			.then((json) => {
+				console.log('d');
+				dispatch({ type: 'GET_PET', payload: json });
+			});
 	};
 };

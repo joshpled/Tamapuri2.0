@@ -1,4 +1,4 @@
-import { config } from '../Constants';
+import { config } from './Constants';
 var url = config.url.AUTH_URL;
 
 export const storeUser = (payload) => {

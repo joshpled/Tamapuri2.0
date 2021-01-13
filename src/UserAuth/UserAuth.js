@@ -5,9 +5,7 @@ import { Container, Jumbotron } from 'react-bootstrap';
 import '../styles/canvas.css';
 
 export class UserAuth extends Component {
-
 	render() {
-	
 		return (
 			<div>
 				<Container
@@ -34,7 +32,7 @@ export class UserAuth extends Component {
 							</Container>
 						</Jumbotron>
 
-						<Registration loginUser={this.props.loginUser} registerUser={this.props.registerUser}/>
+						<Registration loginUser={this.props.loginUser} registerUser={this.props.registerUser} />
 					</Container>
 				</Container>
 			</div>
