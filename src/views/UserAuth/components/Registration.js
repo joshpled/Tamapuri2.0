@@ -32,7 +32,8 @@ class Registration extends Component {
 
 	render() {
 		return (
-			<div>
+			<div style={{marginTop: '40px'}}>
+			<h1>REGISTER</h1>
 				<Form onSubmit={this.handleSubmit}>
 					<Form.Control
 						type="email"

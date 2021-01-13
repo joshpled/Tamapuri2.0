@@ -4,20 +4,17 @@ import { Container, Image } from 'react-bootstrap';
 import './home.css';
 //components
 import NameStatusBar from '../../components/NameStatusBar';
-import Buttons from './components/Buttons'
+import Buttons from './components/Buttons';
+import LogoImage from './components/LogoImage';
 
 class Home extends Component {
-
-
 	render() {
 		return (
-			
-				<Container id="squareSetting">
-				<NameStatusBar />
-				<Image fluid alt="logo" src="/images/Logo.png" id="imgSetting" />
+			<Container id="squareSetting">
+				<NameStatusBar home={true}/>
+				<LogoImage />
 				<Buttons />
 			</Container>
-			
 		);
 	}
 }

@@ -25,8 +25,8 @@ class UserAuth extends Component {
 		return (
 			<Container id="squareSetting">
 			<NameStatusBar />
-				<Jumbotron>
-					<h1>Welcome!</h1>
+				<Jumbotron style={{marginTop: '140px'}}>
+					<h1 className="display-2">Welcome!</h1>
 				</Jumbotron>
 				{this.state.choice === 'login' ? <Login /> : <Registration />}
 			</Container>
