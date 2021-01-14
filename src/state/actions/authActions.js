@@ -39,6 +39,7 @@ export const loginUser = (email, password) => {
 			.then((json) => {
 				if (json.logged_in === true){
 				dispatch({ type: 'SET_USER', payload: json });
+				return {logged_in: true}
 				}
 			})
 			.catch((error) => console.log(error));

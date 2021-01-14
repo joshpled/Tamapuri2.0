@@ -15,9 +15,8 @@ class Routes extends Component {
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route exact path="/user_auth" component={UserAuth} />
-					<Redirect from="/users/:id" to="/users/profile/:id" />
-					<Route path="/users/profile/:id">
-						<Dashboard />
+					<Route path="/dashboard">
+						<Dashboard history={customHistory}/>
 					</Route>
 					<Route path="/user/:id/pet/:id">
 						<PetApp />

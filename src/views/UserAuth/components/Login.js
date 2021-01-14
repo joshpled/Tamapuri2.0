@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
 class Login extends Component {
@@ -18,7 +17,7 @@ class Login extends Component {
 		const { email, password } = this.state;
 		e.preventDefault();
 		this.props.loginUser(email, password)
-		this.props.history.push('/dashboard')
+		this.props.history.push(`/dashboard`)
 	}
 
 	handleChange(e) {
@@ -60,4 +59,4 @@ class Login extends Component {
 	}
 }
 
-export default withRouter(Login);
+export default Login;

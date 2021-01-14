@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './menu.css';
 import { Modal, Button } from 'react-bootstrap';
-import HomeMenu from './HomeMenu';
+import HomeMenu from './Menus/HomeMenu';
+import DashboardMenu from './Menus/DashboardMenu';
+import UserAuthMenu from './Menus/UserAuthMenu'
 
 export default class Menu extends Component {
 	constructor(props, context) {
@@ -21,11 +23,16 @@ export default class Menu extends Component {
 		this.setState({ show: false });
 	}
 
-	menuFormat(){
-		switch(this.props.location){
+	menuFormat() {
+		switch (this.props.location) {
 			case 'home':
-				return (<HomeMenu />)
-				default: return (<h2>Hello</h2>)
+				return <HomeMenu />;
+			case 'dashboard':
+				return <DashboardMenu />;
+			case 'userAuth':
+				return <UserAuthMenu />;
+			default:
+				return <h2>Hello</h2>;
 		}
 	}
 
