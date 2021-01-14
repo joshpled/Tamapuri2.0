@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 //Redux
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import reducer from './reducers/rootReducer';
+import reducer from './state/reducers/rootReducer';
 import thunk from 'redux-thunk';
 //styling
 import 'bootstrap/dist/css/bootstrap.min.css';

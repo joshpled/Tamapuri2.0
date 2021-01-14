@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Container, Jumbotron } from 'react-bootstrap';
 
-import NameStatusBar from '../../components/NameStatusBar';
+import MenuBar from '../../components/MenuBar/MenuBar';
 import Login from './components/Login';
 import Registration from './components/Registration';
 
@@ -14,7 +14,6 @@ class UserAuth extends Component {
 		this.state = {
 			choice: '',
 		};
-		
 	}
 
 	componentDidMount() {
@@ -24,8 +23,8 @@ class UserAuth extends Component {
 	render() {
 		return (
 			<Container id="squareSetting">
-			<NameStatusBar />
-				<Jumbotron style={{marginTop: '140px'}}>
+				<MenuBar location={'userAuth'}/>
+				<Jumbotron style={{ marginTop: '140px' }}>
 					<h1 className="display-2">Welcome!</h1>
 				</Jumbotron>
 				{this.state.choice === 'login' ? <Login /> : <Registration />}

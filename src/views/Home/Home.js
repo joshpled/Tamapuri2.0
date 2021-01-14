@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 //styling
-import { Container, Image } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import './home.css';
 //components
-import NameStatusBar from '../../components/NameStatusBar';
+import MenuBar from '../../components/MenuBar/MenuBar';
 import Buttons from './components/Buttons';
 import LogoImage from './components/LogoImage';
 
@@ -11,7 +11,7 @@ class Home extends Component {
 	render() {
 		return (
 			<Container id="squareSetting">
-				<NameStatusBar home={true}/>
+				<MenuBar home={true} location={'home'}/>
 				<LogoImage />
 				<Buttons />
 			</Container>

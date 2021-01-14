@@ -31,12 +31,12 @@ export function effectAmount(curr, value) {
 	if (index !== 0) {
 		calc = curr - value / randArr[number];
 	}
-	console.log(calc)
 	return limitNumberWithinRange(calc, 0, 100);
 }
 
 export function changeAttribute(attribute, itemValue, pet) {
 	let data = {};
+	console.log(data);
 	switch (attribute) {
 		case 'fun':
 			return (data = {
@@ -49,7 +49,7 @@ export function changeAttribute(attribute, itemValue, pet) {
 			return (data = {
 				hunger: newAmount(pet.hunger, itemValue),
 				fun: effectAmount(pet.fun, itemValue),
-				energy: effectAmount(pet.energy, itemValue)
+				energy: effectAmount(pet.energy, itemValue),
 			});
 		case 'health':
 			return (data = {

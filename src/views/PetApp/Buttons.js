@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/button.css';
 import '../styles/menu.css';
-import { changeAttribute } from '../helper-methods/calculations';
+import { changeAttribute } from './calculations';
 
 import { Button, Container, Row, Col, OverlayTrigger, Popover, Image, Tooltip } from 'react-bootstrap';
 

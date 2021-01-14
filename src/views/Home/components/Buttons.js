@@ -17,7 +17,7 @@ export default function Buttons() {
 				<motion.button
 					whileHover={{ scale: 1.2, x: '-5px' }}
 					whileTap={{ scale: 0.9 }}
-					className="btn btn-primary btn-sm"
+					className="btn btn-primary"
 					id="buttonSetting"
 				>
 					Login
@@ -27,7 +27,7 @@ export default function Buttons() {
 				<motion.button
 					whileHover={{ scale: 1.2, x: '5px' }}
 					whileTap={{ scale: 0.9 }}
-					className="btn btn-secondary btn-sm"
+					className="btn btn-secondary"
 					id="buttonSetting"
 				>
 					Register
