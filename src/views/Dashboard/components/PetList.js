@@ -1,12 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { Button  } from 'react-bootstrap';
+import '../dashboard.css'
 
 export default function PetList(props) {
-    const {user} = props
-    const {pets} = props.user
-    return (
-        <div>
-        <h1>Welcome, {user.email}</h1>
-            {pets && pets.map((pet)=><li key={pet.id}>{pet.name}</li>)}
-        </div>
-    )
+    const { pets } = props.user;
+
+	return (
+		<div>
+			{pets &&
+				pets.map((pet) => 
+                    <Button key={pet.id} id="buttonSetting">{pet.name}</Button>
+				)}
+		</div>
+	);
 }

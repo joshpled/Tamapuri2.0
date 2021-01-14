@@ -47,10 +47,14 @@ export const loginUser = (email, password) => {
 };
 
 export const registerUser = (email, password, password_confirmation) => {
+
+	const remove = s => s.replace(/\@.*$/, "")
+
 	let registerData = {
 		email: email,
 		password: password,
 		password_confirmation: password_confirmation,
+		username: remove(email)
 	};
 
 	return (dispatch) => {
