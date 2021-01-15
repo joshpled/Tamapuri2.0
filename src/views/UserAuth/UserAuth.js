@@ -15,7 +15,7 @@ class UserAuth extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			choice: '',
+			choice: ''
 		};
 	}
 
@@ -36,11 +36,11 @@ class UserAuth extends Component {
 				{choice === 'login' ? (
 					<Login loginUser={loginUser} history={history} />
 				) : (
-					<Registration registerUser={registerUser} history={history} />
+					<Registration registerUser={registerUser} history={history} error={this.props.error} />
 				)}
 			</Container>
 		);
 	}
 }
 
-export default connect(null, { loginUser, registerUser })(UserAuth);
+export default connect(state => state.error, { loginUser, registerUser })(UserAuth);

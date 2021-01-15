@@ -37,9 +37,9 @@ export const loginUser = (email, password) => {
 		})
 			.then((response) => response.json())
 			.then((json) => {
-				if (json.logged_in === true){
-				dispatch({ type: 'SET_USER', payload: json });
-				return {logged_in: true}
+				if (json.logged_in === true) {
+					dispatch({ type: 'SET_USER', payload: json });
+					return { logged_in: true };
 				}
 			})
 			.catch((error) => console.log(error));
@@ -47,14 +47,13 @@ export const loginUser = (email, password) => {
 };
 
 export const registerUser = (email, password, password_confirmation) => {
-
-	const remove = s => s.replace(/\@.*$/, "")
+	const remove = (s) => s.replace(/\@.*$/, '');
 
 	let registerData = {
 		email: email,
 		password: password,
 		password_confirmation: password_confirmation,
-		username: remove(email)
+		username: remove(email),
 	};
 
 	return (dispatch) => {
@@ -64,12 +63,14 @@ export const registerUser = (email, password, password_confirmation) => {
 			headers: { 'Content-Type': 'application/json' },
 			credentials: 'include',
 			body: JSON.stringify({ user: registerData }),
-		}).then((response) => response.json())
+		})
+			.then((response) => response.json())
 			.then((data) => {
 				if (data.status === 'created') {
 					dispatch({ type: 'SET_USER', payload: data });
+				} else {
+					dispatch({ type: 'READ_ERROR', payload: data.exception });
 				}
-			})
-			.catch((error) => console.log('registration error', error));
+			});
 	};
 };

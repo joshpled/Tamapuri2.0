@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Collapse } from 'react-bootstrap';
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			email: '',
-			password: ''
+			password: '',
+			errors: '',
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,10 +16,10 @@ class Login extends Component {
 
 	handleSubmit(e) {
 		const { email, password } = this.state;
-		const {loginUser, history } = this.props
+		const { loginUser, history } = this.props;
 		e.preventDefault();
-		loginUser(email, password)
-		history.push(`/dashboard`)
+		loginUser(email, password);
+		history.push(`/dashboard`);
 	}
 
 	handleChange(e) {
@@ -29,8 +30,8 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div style={{marginTop: '40px'}}>
-			<h1>LOGIN</h1>
+			<div style={{ marginTop: '40px' }}>
+				<h1>LOGIN</h1>
 				<Form onSubmit={this.handleSubmit}>
 					<Form.Control
 						type="email"
@@ -50,7 +51,6 @@ class Login extends Component {
 						style={{ marginBottom: '.5em' }}
 						required
 					/>
-
 					<Button type="submit" style={{ marginTop: '10px' }}>
 						Login
 					</Button>
