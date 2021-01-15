@@ -24,17 +24,19 @@ class UserAuth extends Component {
 	}
 
 	render() {
-		// debugger;
+		const {choice} = this.state
+		const {loginUser, history, registerUser} = this.props
+
 		return (
 			<Container id="squareSetting">
 				<MenuBar location={'userAuth'} />
 				<Jumbotron style={{ marginTop: '140px' }}>
 					<h1 className="display-2">Welcome!</h1>
 				</Jumbotron>
-				{this.state.choice === 'login' ? (
-					<Login loginUser={this.props.loginUser} history={this.props.history} />
+				{choice === 'login' ? (
+					<Login loginUser={loginUser} history={history} />
 				) : (
-					<Registration registerUser={this.props.registerUser} history={this.props.history} />
+					<Registration registerUser={registerUser} history={history} />
 				)}
 			</Container>
 		);

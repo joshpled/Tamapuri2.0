@@ -67,7 +67,7 @@ export const registerUser = (email, password, password_confirmation) => {
 		}).then((response) => response.json())
 			.then((data) => {
 				if (data.status === 'created') {
-					dispatch({ type: 'SET_USER', payload: data.user });
+					dispatch({ type: 'SET_USER', payload: data });
 				}
 			})
 			.catch((error) => console.log('registration error', error));

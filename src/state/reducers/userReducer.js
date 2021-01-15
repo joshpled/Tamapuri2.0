@@ -1,10 +1,9 @@
 export default function userReducer(state = { loggedInStatus: false, user: {}, loading: false }, action) {
-	// debugger
 	switch (action.type) {
 		case 'GETTING_USER':
 			return {
 				...state,
-				loading: true,
+				loading: true
 			};
 
 		case 'SET_USER':

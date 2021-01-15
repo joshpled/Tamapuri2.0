@@ -15,9 +15,10 @@ class Login extends Component {
 
 	handleSubmit(e) {
 		const { email, password } = this.state;
+		const {loginUser, history } = this.props
 		e.preventDefault();
-		this.props.loginUser(email, password)
-		this.props.history.push(`/dashboard`)
+		loginUser(email, password)
+		history.push(`/dashboard`)
 	}
 
 	handleChange(e) {
