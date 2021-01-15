@@ -40,11 +40,9 @@ export const updatePet = (pet, petId) => {
 export const getPet = (petId) => {
 	return (dispatch) => {
 		dispatch({ type: 'LOADING' });
-		console.log('c');
 		fetch(url + 'pets/' + petId)
 			.then((resp) => resp.json())
 			.then((json) => {
-				console.log('d');
 				dispatch({ type: 'GET_PET', payload: json });
 			});
 	};

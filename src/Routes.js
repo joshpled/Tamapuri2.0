@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Home from './views/Home/Home';
 import Dashboard from './views/Dashboard/Dashboard';
@@ -18,7 +18,7 @@ class Routes extends Component {
 					<Route path="/dashboard">
 						<Dashboard history={customHistory}/>
 					</Route>
-					<Route path="/user/:id/pet/:id">
+					<Route path="/petapp">
 						<PetApp />
 					</Route>
 					<Route path="/user/:id/store"></Route>
