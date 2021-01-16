@@ -50,7 +50,7 @@ export const getPet = (petId) => {
 	};
 };
 
-export const deletePet = () => {
+export const deletePet = (petId) => {
 	return (dispatch) => {
 		fetch(url + 'pets/' + petId, {
 			method: 'DELETE',

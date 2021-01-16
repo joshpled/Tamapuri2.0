@@ -6,12 +6,11 @@ import {deletePet} from '../../../state/actions/petActions'
 import {Modal, Button} from 'react-bootstrap'
 
 const _PetMenu = (props) => {
-    debugger
     return (
         <Modal.Body>
             <Button className="learn-more">Go To Store</Button>
             <Button className="learn-more">Go To A-Vale</Button>
-            <Button className="learn-more" onClick={props.deletePet()}>Delete Pet</Button>
+            <Button className="learn-more" onClick={props.deletePet(props.pet.id)}>Delete Pet</Button>
           </Modal.Body>
     )
 }
