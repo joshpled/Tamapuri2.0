@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+
 import './menu.css';
 import { Modal, Button } from 'react-bootstrap';
+
 import HomeMenu from './Menus/HomeMenu';
 import DashboardMenu from './Menus/DashboardMenu';
-import UserAuthMenu from './Menus/UserAuthMenu'
+import UserAuthMenu from './Menus/UserAuthMenu';
+import PetMenu from './Menus/PetMenu';
 
-export default class Menu extends Component {
+
+
+class Menu extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.handleShow = this.handleShow.bind(this);
@@ -31,6 +36,8 @@ export default class Menu extends Component {
 				return <DashboardMenu />;
 			case 'userAuth':
 				return <UserAuthMenu />;
+			case 'pet':
+				return <PetMenu />;
 			default:
 				return <h2>Hello</h2>;
 		}
@@ -56,3 +63,5 @@ export default class Menu extends Component {
 		);
 	}
 }
+
+export default (Menu);

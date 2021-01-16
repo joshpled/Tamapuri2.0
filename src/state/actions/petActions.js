@@ -5,7 +5,7 @@ export const createNewPet = (name, userId) => {
 	let data = {
 		name: name.charAt(0).toUpperCase() + name.slice(1),
 		user_id: userId,
-	}
+	};
 	return (dispatch) => {
 		dispatch({ type: 'CREATING_PET' });
 		fetch(url + 'pets/', {
@@ -15,7 +15,8 @@ export const createNewPet = (name, userId) => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				dispatch({ type: 'CREATE_PET', payload: data })})
+				dispatch({ type: 'CREATE_PET', payload: data });
+			})
 			.catch((error) => console.log(error));
 	};
 };
@@ -45,6 +46,22 @@ export const getPet = (petId) => {
 			.then((resp) => resp.json())
 			.then((json) => {
 				dispatch({ type: 'GET_PET', payload: json });
+			});
+	};
+};
+
+export const deletePet = () => {
+	return (dispatch) => {
+		fetch(url + 'pets/' + petId, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+		})
+			.then((resp) => resp.json())
+			.then((json) => {
+				dispatch({ type: 'CLEAR_PET' });
 			});
 	};
 };

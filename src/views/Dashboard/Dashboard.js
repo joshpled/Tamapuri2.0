@@ -25,6 +25,7 @@ class Dashboard extends Component {
 		this.props.user.logged_in ? console.log('logged_in') : this.props.history.push('/');
 	}
 
+
 	handleNewPet(){
 		this.setState({
 			open: !this.state.open
@@ -32,7 +33,7 @@ class Dashboard extends Component {
 	}
 
 	render() {
-        const { user, getPet, history, createNewPet } = this.props;
+        const { user, getPet, history } = this.props;
 		return (
 			<Container id="canvasSetting">
 				<MenuBar user={user} location={'dashboard'} />

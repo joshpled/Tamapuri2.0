@@ -3,7 +3,7 @@ import React from 'react'
 import {Modal, Button} from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 
-export default function HomeMenu() {
+export default function DashboardMenu() {
 
     const dispatch = useDispatch()
 
@@ -13,7 +13,7 @@ export default function HomeMenu() {
             <Button className="learn-more">Go To A-Vale</Button>
             <Button className="learn-more">Change Pet Color</Button>
             <Button className="learn-more">Delete Pet</Button>
-            <Button className="learn-more" onClick={() => dispatch({ type: 'CLEAR_USER' })}>Logout</Button>
+            <Button onClick={() => dispatch({ type: 'CLEAR_USER' })}>Logout</Button>
           </Modal.Body>
     )
 }
