@@ -4,8 +4,8 @@ var url = config.url.BASE_URL;
 export const createNewPet = (name, userId) => {
 	let data = {
 		name: name.charAt(0).toUpperCase() + name.slice(1),
-		user_id: userId.id,
-	};
+		user_id: userId,
+	}
 	return (dispatch) => {
 		dispatch({ type: 'CREATING_PET' });
 		fetch(url + 'pets/', {
@@ -14,7 +14,8 @@ export const createNewPet = (name, userId) => {
 			body: JSON.stringify({ pet: data }),
 		})
 			.then((response) => response.json())
-			.then((data) => dispatch({ type: 'CREATE_PET', payload: data }))
+			.then((data) => {
+				dispatch({ type: 'CREATE_PET', payload: data })})
 			.catch((error) => console.log(error));
 	};
 };

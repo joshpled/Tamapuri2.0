@@ -15,7 +15,6 @@ import Sprite from './components/Sprite';
 class PetApp extends Component {
 	render() {
 		const { pet } = this.props;
-
 		const motionEffect = {
 			hidden: {
 				opacity: 0,
@@ -32,7 +31,7 @@ class PetApp extends Component {
 		return (
 			<Container id="canvasSetting">
 				<motion.div initial="hidden" animate="visible" variants={motionEffect}>
-					<MenuBar pet={this.props.pet} location={'pet'}/>
+					<MenuBar pet={pet} location={'pet'}/>
 					<div style={{ height: '60px' }} />
 					<Sprite />
 					<StatusBars pet={pet} />

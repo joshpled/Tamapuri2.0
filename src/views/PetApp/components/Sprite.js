@@ -6,7 +6,7 @@ const Sprite = () => {
 	const styles = useSprite({
 		sprite: '/images/spriteIdle.png',
 		width: 530,
-		height: 420,
+		height: 350,
 		fps: 12,
 		direction: 'horizontal',
 		scale: 1.5,

@@ -11,8 +11,10 @@ const StatusBars = (props) => {
 	const barStyle = {
 		height: '25px',
 	};
+	
 	return (
 		<div>
+			<center><h2>{pet.name}</h2></center>
 			<Hearts hearts={pet.health / 20} maxHearts={5} />
 			<hr />
 			<ProgressBar now={pet.fun} label={`Boredom ${pet.fun}%`} style={barStyle} />
