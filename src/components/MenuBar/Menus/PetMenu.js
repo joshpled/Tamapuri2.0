@@ -10,7 +10,7 @@ const _PetMenu = (props) => {
         <Modal.Body>
             <Button className="learn-more">Go To Store</Button>
             <Button className="learn-more">Go To A-Vale</Button>
-            <Button className="learn-more" onClick={props.deletePet(props.pet.id)}>Delete Pet</Button>
+            <Button className="learn-more" onClick={() => props.deletePet(props.pet.id)}>Delete Pet</Button>
           </Modal.Body>
     )
 }

@@ -13,7 +13,7 @@ export default function DashboardMenu() {
             <Button className="learn-more">Go To A-Vale</Button>
             <Button className="learn-more">Change Pet Color</Button>
             <Button className="learn-more">Delete Pet</Button>
-            <Button onClick={() => dispatch({ type: 'CLEAR_USER' })}>Logout</Button>
+            <Button onClick={() => dispatch({ type: 'CLEAR_USER' })} className="learn-more">Logout</Button>
           </Modal.Body>
     )
 }

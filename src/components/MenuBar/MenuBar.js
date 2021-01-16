@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import { createBrowserHistory } from 'history';
 
+import {connect} from 'react-redux'
+import {clearUser} from '../../state/actions/authActions'
+
 import Hamburger from 'hamburger-react';
 import Menu from './Menu';
 
@@ -10,7 +13,7 @@ import Backarrow from '../Icons';
 
 const history = createBrowserHistory();
 
-export default class MenuBar extends Component {
+class MenuBar extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.toggle = this.toggle.bind(this);
@@ -46,10 +49,12 @@ export default class MenuBar extends Component {
 						<span onClick={() => this.onMenuClick()}>
 							<Hamburger toggled={this.state.isOpen} toggle={this.toggle} />
 						</span>
-						<Menu ref={this.menuModalRef} toggle={this.toggle} location={this.props.location} />
+						<Menu ref={this.menuModalRef} toggle={this.toggle} location={this.props.location} clearUser={this.props.clearUser} />
 					</div>
 				)}
 			</Container>
 		);
 	}
 }
+
+export default connect(null, {clearUser})(MenuBar)

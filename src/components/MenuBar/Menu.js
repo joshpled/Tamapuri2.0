@@ -9,7 +9,6 @@ import UserAuthMenu from './Menus/UserAuthMenu';
 import PetMenu from './Menus/PetMenu';
 
 
-
 class Menu extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -54,6 +53,9 @@ class Menu extends Component {
 					{this.menuFormat()}
 
 					<Modal.Footer>
+						<Button className="learn-more" onClick={() => this.props.clearUser()}>
+							Logout
+						</Button>
 						<Button className="learn-more" onClick={() => this.handleClose()}>
 							Close
 						</Button>
@@ -64,4 +66,4 @@ class Menu extends Component {
 	}
 }
 
-export default (Menu);
+export default Menu;
