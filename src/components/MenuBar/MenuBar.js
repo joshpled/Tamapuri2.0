@@ -9,8 +9,6 @@ import {clearUser} from '../../state/actions/authActions'
 import Hamburger from 'hamburger-react';
 import Menu from './Menu';
 
-import Backarrow from '../Icons';
-
 const history = createBrowserHistory();
 
 class MenuBar extends Component {
@@ -41,7 +39,7 @@ class MenuBar extends Component {
 			<Container>
 				{!this.props.home && (
 					<span onClick={() => history.goBack()} style={{ cursor: 'pointer', float: 'left' }}>
-						<Backarrow />
+						<img src='/nav-icons/backLeft.png' id="backArrow"/>
 					</span>
 				)}
 				{!this.props.home && (

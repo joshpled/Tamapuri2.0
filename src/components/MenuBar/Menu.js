@@ -42,6 +42,14 @@ class Menu extends Component {
 		}
 	}
 
+	logoutButton(){
+		if (this.props.location === 'home' || this.props.location === 'userAuth' ){
+			return false 
+		} else{
+			return true
+		}
+	}
+
 	render() {
 		return (
 			<>
@@ -53,9 +61,9 @@ class Menu extends Component {
 					{this.menuFormat()}
 
 					<Modal.Footer>
-						<Button className="learn-more" onClick={() => this.props.clearUser()}>
+						{this.logoutButton() && <Button className="learn-more" onClick={() => this.props.clearUser()}>
 							Logout
-						</Button>
+						</Button>}
 						<Button className="learn-more" onClick={() => this.handleClose()}>
 							Close
 						</Button>
