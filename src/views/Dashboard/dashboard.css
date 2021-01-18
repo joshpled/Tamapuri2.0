@@ -1,11 +1,16 @@
 #canvasSetting {
 	background-color: #9bebf5e3;
 	min-height: 100vh;
-    max-width: 540px;
+	max-width: 540px;
 	border-style: ridge;
 	border-width: 3px;
 }
 
 #buttonSetting {
 	margin: 0px 2px;
+}
+
+#sendToBottom {
+	margin-top: 10px;
+	float: right;
 }

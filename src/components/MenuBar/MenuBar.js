@@ -39,7 +39,7 @@ class MenuBar extends Component {
 			<Container>
 				{!this.props.home && (
 					<span onClick={() => history.goBack()} style={{ cursor: 'pointer', float: 'left' }}>
-						<img src='/nav-icons/backLeft.png' id="backArrow"/>
+						<img src='/nav-icons/backLeft.png' id="backArrow" alt='backarrow'/>
 					</span>
 				)}
 				{!this.props.home && (

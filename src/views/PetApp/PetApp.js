@@ -13,6 +13,7 @@ import Buttons from './components/Buttons';
 import Sprite from './components/Sprite';
 
 class PetApp extends Component {
+
 	render() {
 		const { pet } = this.props;
 		const motionEffect = {
