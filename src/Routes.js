@@ -13,7 +13,7 @@ import Dashboard from './views/Dashboard/Dashboard';
 import PetApp from './views/PetApp/PetApp';
 import UserAuth from './views/UserAuth/UserAuth';
 
-import { config } from './Constants';
+import { config } from './state/actions/Constants';
 var url = config.url.BASE_URL;
 
 const customHistory = createBrowserHistory();
