@@ -21,17 +21,17 @@ This is the inspiration behind Tamapuri! According to wikipedia, Tamagotchi, “
 Well since my project isn’t on a handheld device, or at least not a watch, I created my own portmanteau of Tamago and Apuri (アプリ) which means “App”!
 
 ## Screenshots
-<div align="center"><img src="" width="450px"></div>
-<div align="center"><img src="" width="450px"></div>
-<div align="center"><img src="" width="450px"></div>
+<div align="center"><img src="https://i.imgur.com/cKhbDXH.png" width="450px"></div>
+<div align="center"><img src="https://i.imgur.com/4vF97sH.png" width="450px"></div>
+<div align="center"><img src="https://i.imgur.com/z4vSM3h.png" width="450px"></div>
 
 
 ## Technologies
 * Ruby on Rails - Ruby version 2.6.1 and Rails version 6.0.3 as API
-* Javacscript - Node.js version 14.13.0
+* React - with Redux and Thunk
 * PostgreSQL - version 12.4
 * Bootstrap - version 4.5.3
-* Ruby Gems: fast_jsonapi, faker, awesomeprint, puma, byebug, rack-cors, and bootsnap
+* Framer Motion - for animations
 
 ## Setup
 Fork and Clone then run:
@@ -44,36 +44,102 @@ rails s
 
 ## Code Examples
 ```
-const BASE_URL = "http://localhost:3000/api/v1/";
-```
+const prod = {
+	url: {
+		BASE_URL: 'https://my-heroku-app.herokuapp.com/api/v1/',
+		AUTH_URL: 'https://my-heroku-app.herokuapp.com/',
+	},
+};
 
-Inside index.js is the `BASE_URL` variable if you need to change it
+const dev = {
+	url: {
+		BASE_URL: 'http://localhost:3090/api/v1/',
+		AUTH_URL: 'http://localhost:3090/',
+	},
+};
 
-```
-document.addEventListener("DOMContentLoaded", () => {
-```
-```
-  getAllCommunities(); //auto populates the list. If you didn't seed it, there should be nothing. Check console. 
+export const config = process.env.NODE_ENV === 'development' ? dev : prod;
 ```
 ```
-  document.querySelector("#modal").innerHTML = createCommunityModal; // required for modal of create community to work. See communities.js
-});
+export function limitNumberWithinRange(num, min, max) {
+	const MIN = min || 0;
+	const MAX = max || 100;
+	const parsed = parseInt(num);
+	return Math.min(Math.max(parsed, MIN), MAX);
+}
+
+let arr = Array(6000).fill(3).concat(Array(3000).fill(2), Array(100).fill(1), Array(5000).fill(0));
+
+function shuffle(a) {
+	var j, x, i;
+	for (i = a.length - 1; i > 0; i--) {
+		j = Math.floor(Math.random() * (i + 1));
+		x = a[i];
+		a[i] = a[j];
+		a[j] = x;
+	}
+	return a;
+}
+
+export function newAmount(curr, value) {
+	const calc = curr + value;
+	return limitNumberWithinRange(calc, 0, 100);
+}
+
+export function effectAmount(curr, value) {
+	let randArr = shuffle(arr);
+	let number = Math.floor(Math.random() * randArr.length);
+	let index = randArr[number];
+	let calc = curr;
+	if (index !== 0) {
+		calc = curr - value / randArr[number];
+	}
+	return limitNumberWithinRange(calc, 0, 100);
+}
+
+export function changeAttribute(attribute, itemValue, pet) {
+	let data = {};
+	console.log(data);
+	switch (attribute) {
+		case 'fun':
+			return (data = {
+				fun: newAmount(pet.fun, itemValue),
+				hunger: effectAmount(pet.hunger, itemValue),
+				energy: effectAmount(pet.energy, itemValue),
+				hygiene: effectAmount(pet.hygiene, itemValue),
+			});
+		case 'hunger':
+			return (data = {
+				hunger: newAmount(pet.hunger, itemValue),
+				fun: effectAmount(pet.fun, itemValue),
+				energy: effectAmount(pet.energy, itemValue),
+			});
+		case 'health':
+			return (data = {
+				health: newAmount(pet.health, itemValue),
+				hunger: effectAmount(pet.hunger, itemValue),
+			});
+		default:
+			return (data = { ...pet });
+	}
+}
 ```
 ## Features
-* User accounts and associations
-* Create Events
-* Comments
+* Create multiple pets
+* User Authentication
 
 ## Future Developments
 * Mobile Application (Progressive Web App | React Native)
 * Firebase implementation
-* Location Based (Implement GPS local group search)
+* Get items from a store
+* Play gambling games for money
+* Change colors and styles of pets
 
 ## Status
-Project is: _in progress_, because it started as a school project and it's still in development.
+IN DEVELOPMENT
 
 ## Inspiration
-Meetup and Facebook Groups are wonderful tools for meeting people. However, since all of our phones can now show us the closest restaurants and stores, why not the closests gather of minds? I want to meet people who knit and want to have a knit party. I want to meet people in real life that share my interests. If "eyes are the window to your soul" then our phones are the window to our world.
+I loved tamagotchis! I had one frog I killed and I'll never forget it. Pet games became a personal iterest to me then. I want to create an alien like one where the items and mini games can be unique.
 
 ## License
 Copyright (c) 2020 Joshua Perez Leduc
