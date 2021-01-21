@@ -13,13 +13,16 @@ import Dashboard from './views/Dashboard/Dashboard';
 import PetApp from './views/PetApp/PetApp';
 import UserAuth from './views/UserAuth/UserAuth';
 
+import { config } from './Constants';
+var url = config.url.BASE_URL;
+
 const customHistory = createBrowserHistory();
 
 class Routes extends Component {
 
 	checkLoginStatus() {
 		axios
-			.get('http://localhost:3090/logged_in', { withCredentials: true })
+			.get(url + 'logged_in/', { withCredentials: true })
 			.then((response) => {
 				this.props.storeUser(response.data)
 			})
