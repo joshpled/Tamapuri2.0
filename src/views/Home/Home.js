@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //styling
 import { Container } from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 import './home.css';
 //components
 import MenuBar from '../../components/MenuBar/MenuBar';
@@ -14,6 +15,7 @@ class Home extends Component {
 				<MenuBar home={true} location={'home'}/>
 				<LogoImage />
 				<Buttons />
+				<center><Link to='/nologin'>Play without Login</Link></center>
 			</Container>
 		);
 	}

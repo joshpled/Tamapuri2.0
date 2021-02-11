@@ -9,7 +9,7 @@ const _PetMenu = (props) => {
     return (
         <Modal.Body>
             <Button className="learn-more">Go To Store</Button>
-            <Button className="learn-more">Go To A-Vale</Button>
+            <Button className="learn-more">Go To Las Vegas</Button>
             <Button className="learn-more" onClick={() => props.deletePet(props.pet.id)}>Delete Pet</Button>
           </Modal.Body>
     )

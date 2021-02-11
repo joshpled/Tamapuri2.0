@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import CircleButton from '../CircleButton';
+import '../petapp.css'
 
 class Buttons extends Component {
 	constructor(props) {
@@ -7,16 +9,16 @@ class Buttons extends Component {
 	}
 
 	handleClick() {
-		debugger;
 	}
 
 	render() {
 		return (
-			<div>
-				<button onClick={this.handleClick}>Items</button>
+			<div className='items'>
+				<button onClick={this.handleClick} className='btn btn-primary btn-jelly items-button' >Items</button>
 			</div>
 		);
 	}
 }
 
 export default Buttons;
+ 

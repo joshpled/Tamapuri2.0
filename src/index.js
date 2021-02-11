@@ -3,19 +3,12 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render } from 'react-dom';
 //Redux
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import reducer from './state/reducers/rootReducer';
-import thunk from 'redux-thunk';
+import store from './state/store'
 //styling
 import 'bootstrap/dist/css/bootstrap.min.css';
 //components
 import Routes from './Routes'
-
-const store = createStore(
-	reducer,
-	compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-);
+import { Provider } from 'react-redux';
 
 render(
 	<Provider store={store}>

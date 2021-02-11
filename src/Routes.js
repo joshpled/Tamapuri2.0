@@ -12,9 +12,7 @@ import Home from './views/Home/Home';
 import Dashboard from './views/Dashboard/Dashboard';
 import PetApp from './views/PetApp/PetApp';
 import UserAuth from './views/UserAuth/UserAuth';
-
-import { config } from './state/actions/Constants';
-var url = config.url.BASE_URL;
+import NoLogin from './views/PetApp/NoLogin'
 
 const customHistory = createBrowserHistory();
 
@@ -22,7 +20,7 @@ class Routes extends Component {
 
 	checkLoginStatus() {
 		axios
-			.get(url + 'logged_in/', { withCredentials: true })
+			.get('http://localhost:3090/logged_in/', { withCredentials: true })
 			.then((response) => {
 				this.props.storeUser(response.data)
 			})
@@ -46,6 +44,9 @@ class Routes extends Component {
 					</Route>
 					<Route path="/petapp">
 						<PetApp />
+					</Route>
+					<Route path="/nologin">
+						<NoLogin />
 					</Route>
 					<Route path="/user/:id/store"></Route>
 				</Switch>

@@ -6,6 +6,7 @@ import './petapp.css';
 
 import { updatePet } from '../../state/actions/petActions';
 import { connect } from 'react-redux';
+// import store from '../../state/store'
 
 import MenuBar from '../../components/MenuBar/MenuBar';
 import StatusBars from './components/StatusBars';
@@ -13,8 +14,10 @@ import Buttons from './components/Buttons';
 import Sprite from './components/Sprite';
 
 class PetApp extends Component {
-
 	render() {
+		// return (
+		// 	<div>Hello</div>
+		// )
 		const { pet } = this.props;
 		const motionEffect = {
 			hidden: {
@@ -42,5 +45,6 @@ class PetApp extends Component {
 		);
 	}
 }
+// export default PetApp
 
 export default connect((state) => state.pet, { updatePet })(PetApp);
