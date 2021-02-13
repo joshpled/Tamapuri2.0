@@ -20,7 +20,6 @@ class Home extends Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.createNewPet(this.state.name,1)
-    debugger
       this.props.history.push('/petapp')
   }
 

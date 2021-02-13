@@ -46,7 +46,7 @@ class Routes extends Component {
 						<PetApp />
 					</Route>
 					<Route path="/nologin">
-						<NoLogin />
+						<NoLogin history={customHistory}/>
 					</Route>
 					<Route path="/user/:id/store"></Route>
 				</Switch>

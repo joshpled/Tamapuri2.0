@@ -463,3 +463,12 @@ button.learn-more:active::before {
 		transform: translateX(-100%);
    }
 }
+
+.popover-content{
+	background-color: rgba(134, 183, 244, 0.8);
+	color: black;
+}
+
+.item-images{
+	height: 3em;
+}
