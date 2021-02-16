@@ -471,4 +471,9 @@ button.learn-more:active::before {
 
 .item-images{
 	height: 3em;
+	cursor: pointer;
+}
+.item-images:hover{
+	animation: jelly 0.5s;
+	cursor: pointer;
 }
