@@ -465,7 +465,6 @@ button.learn-more:active::before {
 }
 
 .popover-content{
-	background-color: rgba(134, 183, 244, 0.8);
 	color: black;
 }
 
@@ -476,4 +475,9 @@ button.learn-more:active::before {
 .item-images:hover{
 	animation: jelly 0.5s;
 	cursor: pointer;
+}
+
+.popover-custom{
+	background-color: rgba(134, 183, 244, 0.8);
+	border-radius: 10px
 }

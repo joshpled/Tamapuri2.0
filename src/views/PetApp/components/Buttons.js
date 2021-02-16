@@ -24,7 +24,7 @@ class Buttons extends Component {
 
   render() {
     const popover = (
-      <Popover id="popover-basic">
+      <Popover id="popover-basic" className="popover-custom">
         <Popover.Content className="popover-content">
           <div>
             <span onClick={(e) => this.handleClick(e)}>

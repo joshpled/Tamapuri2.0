@@ -23,7 +23,7 @@ export default function PetList(props) {
 				{pets &&
 					pets.map((pet) => (
 						<>
-							<tr key={pet.id}>
+							<tr>
 								<td colSpan="2">{pet.name}</td>
 								<td>
 									<Button id="buttonSetting" onClick={() => handleClick(pet.id)} >
